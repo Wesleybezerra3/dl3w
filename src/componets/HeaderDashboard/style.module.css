@@ -1,0 +1,32 @@
+.headerDashboard{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    /* border-radius: 5px; */
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--secudary-color);
+}
+.btnConfig{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    border: none;
+}
+.selectClass{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    font-weight: 600;
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+}

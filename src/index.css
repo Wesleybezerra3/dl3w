@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  line-height: 1.5;
+
+  --primary-color:#325EA1;
+  --secudary-color:#fcfcfc;
+  --text-color:#555555;
+  --white-color:#FFFFFF;
+  --black-color:#000000;
+  --border-color:#dbdbdb;
+  --grey-color:#cccccc;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+

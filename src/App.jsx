@@ -25,8 +25,8 @@ function App() {
 
            <Route path="/dashboard" element={<DashboardLayout/>}>
             <Route index element={<Dashboard/>}/>
-            <Route path="disciplinas_horarios" element={<SubjectSchedules/>}/>
-            <Route path="gerenciamento_de_usuarios" element={<ManagementUsers/>}/>
+            <Route path="disciplinashorarios" element={<SubjectSchedules/>}/>
+            <Route path="gerenciamentodeusuarios" element={<ManagementUsers/>}/>
 
           </Route>
 

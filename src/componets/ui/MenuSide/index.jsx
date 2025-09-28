@@ -41,14 +41,14 @@ export const MenuSide = () => {
               <h2>Gestão</h2>
               <ul>
                 <li>
-                  <a href="/dashboard/gerenciamento_de_usuarios" className={style.links}>
+                  <a href="/dashboard/gerenciamentodeusuarios" className={style.links}>
                     <Users2 className={style.icon} />{" "}
                     Gerenciamento de
                     Usuários
                   </a>
                 </li>
                 <li>
-                  <a href="/dashboard/disciplinas_horarios" className={style.links}>
+                  <a href="/dashboard/disciplinashorarios" className={style.links}>
                     {" "}
                     <BookTextIcon className={style.icon} />
                     Disciplinas e Horários

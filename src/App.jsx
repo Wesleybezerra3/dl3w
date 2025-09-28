@@ -4,7 +4,7 @@ import { Layout } from "./pages/Layout";
 import { Login } from "./pages/Login";
 import { DashboardLayout } from "./pages/DashboardLayout";
 import { Dashboard } from "./pages/Dashboard";
-import { SubjectSchedules } from "./pages/subjectSchedules";
+import { SubjectSchedules } from "./pages/SubjectSchedules";
 import { SelectCourse } from "./componets/SelectCourse";
 import { ManagementUsers } from "./pages/ManagementUsers";
 

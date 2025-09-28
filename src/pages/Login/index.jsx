@@ -1,9 +1,11 @@
 import style from "./style.module.css";
 import logo from "../../assets/logo.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAppContext } from "../../context/AppContext";
 
 export const Login = () => {
+  const {role} = useAppContext();
   const navigate = useNavigate();
   const [loginData, setLoginData] = useState({
     email: "",
@@ -21,6 +23,9 @@ export const Login = () => {
       navigate("/dashboard");
     }
   };
+  useEffect(()=>{
+    console.log(role);
+  },{})
   return (
     <>
       <main>

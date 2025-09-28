@@ -5,11 +5,11 @@ import studentIcon from '../../assets//icons/StudentIcon.png'
 export const CardDashboard = ({backColor, color, number, icon, text }) => {
   return (
     <>
-    <article className={style.card}>
+    <article className={style.card} style={{backgroundColor:color}}>
         <div className={style.containerText}>
             <p className={style.text}>
-                Alunos matriculados
-                <span>50</span>
+                {text}
+                <span>{number}</span>
                 Ao total
             </p>
         </div>

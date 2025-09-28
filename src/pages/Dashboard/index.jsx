@@ -8,10 +8,10 @@ export const Dashboard = () => {
     <>
       <section className={style.container}>
         <div className={style.infoArea}>
-          <CardDashboard/>
-          <CardDashboard/>
-          <CardDashboard/>
-          <CardDashboard/>
+          <CardDashboard text={'Alunos Matrículados'} number={'100'}/>
+          <CardDashboard text={'Professores'} number={'10'}/>
+          <CardDashboard text={'Disciplinas'} number={'7'}/>
+          <CardDashboard text={'Média Geral'} number={'8.0'}/>
 
         </div>
         <div className={style.scheduleArea}>

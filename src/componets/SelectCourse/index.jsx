@@ -5,47 +5,43 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from "../../context/AppContext";
 
-export const SelectRole = () => {
-      const { setRole } = useAppContext();
+export const SelectCourse = () => {
+      const { setCourse } = useAppContext();
 
     const [selectValue, setSelectValue] = useState();
     const navigate = useNavigate();
     const [btnClass, setBtnClass] = useState();
 
 
-    const handleCargo = (e) => {
+    const handleClass = (e) => {
         e.preventDefault();
-
-        setRole(selectValue)
-        if (selectValue !== 'Administrador') {
+        setCourse(selectValue)
+        if (selectValue) {
             navigate('/login')
             console.log(selectValue)
-        }
-        else {
-            navigate('/selectcourse')
         }
     }
   return (
     <>
-      <form className={style.selectRoleForm} onSubmit={handleCargo}>
+      <form className={style.selectRoleForm} onSubmit={handleClass}>
         <div className={style.headerForm}>
-          <h1>Qual sua função?</h1>
+          <h1>Selecione um curso</h1>
           <img src={logo} alt="" />
         </div>
         <div className={style.select}>
           <select
-            name="cargo"
-            id="cargo"
+            name="class"
+            id="class"
             onChange={(e) => {
               setSelectValue(e.target.value);
             }}
           >
             <option value="" disabled selected>
-              Selecione
+              Cursos
             </option>
-            <option value="Aluno">Aluno</option>
-            <option value="Professor">Professor</option>
-            <option value="Administrador">Administrador</option>
+            <option value="Análise e Desenvolvimento de Sistemas">Análise e Desenvolvimento de Sistemas</option>
+            <option value="Ciência da Computação">Ciência da Computação</option>
+            <option value="Engenharia Civil">Engenharia Civil</option>
           </select>
         </div>
         <div className={style.containerBtn}>

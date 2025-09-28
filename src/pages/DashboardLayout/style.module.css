@@ -3,9 +3,12 @@
     grid-template-columns: 300px auto;
     height: 100vh;
     width: 100vw;
+    overflow: hidden;
 }
 .content{
     grid-column: 2/3;
     /* padding: 10px 40px; */
     overflow-y: auto;
+    height: 100vh;
+    scroll-behavior: smooth;
 }

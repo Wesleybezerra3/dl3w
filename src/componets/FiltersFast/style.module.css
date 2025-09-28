@@ -1,0 +1,62 @@
+.filters{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Roboto',sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+
+
+}
+.headerFilters{
+    width: 100%;
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+.optionFilters{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+
+}
+.optionFilters > div > p{
+    font-weight: 600;
+    color: var(--text-color);
+}
+.optionFilters select{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--border-color);
+}
+.btns{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+.btns > button{
+    font-weight: 600;
+    padding: 8px 20px;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+}
+.btns > button:nth-child(1){
+     border: 0.5px solid var(--primary-color);
+    color: var(--primary-color);
+}
+.btns > button:nth-child(2){
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}

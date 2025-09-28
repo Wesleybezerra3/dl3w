@@ -31,7 +31,7 @@ export const MenuSide = () => {
               <h2>Inicio</h2>
               <ul>
                 <li>
-                  <a href="" className={style.links}>
+                  <a href="/dashboard" className={style.links}>
                     <PieChart className={style.icon} /> Dashboard
                   </a>
                 </li>
@@ -41,17 +41,17 @@ export const MenuSide = () => {
               <h2>Gestão</h2>
               <ul>
                 <li>
-                  <a href="" className={style.links}>
+                  <a href="/dashboard/gerenciamento_de_usuarios" className={style.links}>
                     <Users2 className={style.icon} />{" "}
                     Gerenciamento de
                     Usuários
                   </a>
                 </li>
                 <li>
-                  <a href="" className={style.links}>
+                  <a href="/dashboard/disciplinas_horarios" className={style.links}>
                     {" "}
                     <BookTextIcon className={style.icon} />
-                    Gerenciamento de Disciplinas
+                    Disciplinas e Horários
                   </a>
                 </li>
                 <li>

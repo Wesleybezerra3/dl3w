@@ -1,0 +1,73 @@
+.schedule {
+  background-color: #f5f6fa;
+  color: var(--text-color);
+  font-weight: bold;
+}
+.containerTable {
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  border: 1px solid var(--border-color);
+  margin-top: 24px;
+  overflow-x: auto;
+  font-family: "Roboto", sans-serif;
+}
+.headerTable {
+  color: var(--text-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  height: 60px;
+  border-bottom: 1px solid var(--border-color);
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.contentTable {
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+  /* border: 1px solid var(--border-color); */
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+  background: transparent;
+}
+
+.table th,
+.table td {
+  padding: 14px 12px;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.table th {
+  background: #f5f6fa;
+  font-weight: 600;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.table tr {
+  transition: background 0.2s;
+}
+
+.table tbody tr:hover {
+  background: #f0f4ff;
+}
+
+.table td {
+  border-bottom: 1px solid #eaeaea;
+  color: #444;
+}
+
+.table td:last-child {
+  display: flex;
+  gap: 8px;
+}
+
+.table button:hover {
+  background: #1e40af;
+}

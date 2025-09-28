@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./style.module.css";
-import { MenuSide } from "../../componets/MenuSide";
+import { MenuSide } from "../../componets/ui/MenuSide";
 import { HeaderDashboard } from "../../componets/HeaderDashboard";
 import { Outlet } from "react-router-dom";
 

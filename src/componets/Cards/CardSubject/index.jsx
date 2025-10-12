@@ -1,6 +1,6 @@
 import React from 'react'
 import style from './style.module.css'
-import editIcon from '../../assets/icons/Edit.png'
+import editIcon from '../../../assets/icons/Edit.png'
 
 export const CardSubject = ({discipline, workload,modality}) => {
   return (

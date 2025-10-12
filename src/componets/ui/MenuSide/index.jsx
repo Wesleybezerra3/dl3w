@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./style.module.css";
-import { BookTextIcon, CheckSquare, CogIcon, Edit2, LogOut, NotepadText, PieChart, Users2, UserSquare } from "lucide-react";
+import { Backpack, BookTextIcon, CheckSquare, CogIcon, DoorOpen, Edit2, LogOut, NotepadText, PieChart, Users2, UserSquare } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export const MenuSide = () => {
@@ -17,7 +17,7 @@ export const MenuSide = () => {
           <div className={style.profilePhoto}></div>
           <div className={style.infoUser}>
             <div>
-              <p>Wesley Bezerra</p>
+              <span>Wesley Bezerra</span>
               <span>Administrador</span>
             </div>
              {/* <div className={style.editProfile}>
@@ -28,51 +28,67 @@ export const MenuSide = () => {
         <div className={style.menu}>
           <div className={style.optionsMenu}>
             <div className={style.start}>
-              <h2>Inicio</h2>
+              <h2><span>Inicio</span></h2>
               <ul>
                 <li>
                   <a href="/dashboard" className={style.links}>
-                    <PieChart className={style.icon} /> Dashboard
+                    <PieChart className={style.icon} /> <span>Dashboard</span>
                   </a>
                 </li>
               </ul>
             </div>
             <div className={style.management}>
-              <h2>Gestão</h2>
+              <h2><span>Gestão</span></h2>
               <ul>
                 <li>
-                  <a href="/dashboard/gerenciamentodeusuarios" className={style.links}>
+                  <a href="/dashboard/alunos" className={style.links}>
+                    <Backpack className={style.icon} />{" "}
+                    <span>
+                      Alunos
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/dashboard/professores" className={style.links}>
                     <Users2 className={style.icon} />{" "}
-                    Gerenciamento de
-                    Usuários
+                    <span>
+                      Professores
+                    </span>
                   </a>
                 </li>
                 <li>
                   <a href="/dashboard/disciplinashorarios" className={style.links}>
                     {" "}
                     <BookTextIcon className={style.icon} />
-                    Disciplinas e Horários
+                    <span>Disciplinas e Horários</span>
                   </a>
                 </li>
                 <li>
                   <a href="" className={style.links}>
                     {" "}
+                    <DoorOpen className={style.icon} />
+                    <span>Salas</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/dashboard/turmas" className={style.links}>
+                    {" "}
                     <UserSquare className={style.icon} />
-                    Matrículas
+                    <span>Turmas</span>
                   </a>
                 </li>
                 <li>
                   <a href="" className={style.links}>
                     {" "}
                     <CheckSquare className={style.icon} />
-                    Presenças
+                    <span>Presenças</span>
                   </a>
                 </li>
                 <li>
                   <a href="" className={style.links}>
                     {" "}
                     <NotepadText className={style.icon} />
-                    Relatórios e Logs
+                    <span>Relatórios e Logs</span>
                   </a>
                 </li>
               </ul>
@@ -83,7 +99,7 @@ export const MenuSide = () => {
             <button onClick={logout} className={style.btnLogout}>
               {" "}
               <LogOut className={style.icon} />
-              Sair
+              <span>Sair</span>
             </button>
           </div>
         </div>

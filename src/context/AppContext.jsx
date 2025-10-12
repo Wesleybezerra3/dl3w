@@ -11,26 +11,26 @@ export const AppContext = createContext();
 
 // Provedor do contexto
 export const ContextProvider = ({ children }) => {
-  const [role, setRole] = useState(() => {
-    const saved = localStorage.getItem("role");
-    return saved ? JSON.parse(saved) : null;
-  });
+  // const [role, setRole] = useState(() => {
+  //   const saved = localStorage.getItem("role");
+  //   return saved ? JSON.parse(saved) : null;
+  // });
 
-  const [course, setCourse] = useState(() => {
-    const saved = localStorage.getItem("course");
-    return saved ? JSON.parse(saved) : null;
-  });
+  // const [course, setCourse] = useState(() => {
+  //   const saved = localStorage.getItem("course");
+  //   return saved ? JSON.parse(saved) : null;
+  // });
 
-  useEffect(() => {
-    localStorage.setItem("role", JSON.stringify(role));
-  }, [role]);
+  // useEffect(() => {
+  //   localStorage.setItem("role", JSON.stringify(role));
+  // }, [role]);
 
-  useEffect(() => {
-    localStorage.setItem("course", JSON.stringify(course));
-  }, [course]);
+  // useEffect(() => {
+  //   localStorage.setItem("course", JSON.stringify(course));
+  // }, [course]);
 
   return (
-    <AppContext.Provider value={{ role, setRole, course, setCourse }}>
+    <AppContext.Provider value={{}}>
       {children}
     </AppContext.Provider>
   );

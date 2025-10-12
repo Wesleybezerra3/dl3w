@@ -1,29 +1,34 @@
 .card{
-    width: 350px;
-    height: 150px;
+    position: relative;
+    width: 100%;
+    height: 120px;
     border: var(--border-color) 1px solid;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.062);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
 
+}
+.card:hover{
+    scale: 1.05;
 }
 .text{
     font-family: 'Roboto', sans-serif;
-    color: var(--text-color);
-    font-size: 1.2em;
+    color: #1f1f1f;
+    font-size: 1em;
     font-weight: 600;
     display: flex;
     flex-direction: column;
 }
 .text span{
-    font-size: 2em;
+    font-size: 1.8em;
     font-weight: 700;
 }
 .containerIcon{
-    background-color: var(--primary-color);
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -35,4 +40,14 @@
 .containerIcon img{
     width: 40px;
     height: 40px;
+}
+.maker{
+    width: 100%;
+    height: 5px;
+    background-color: var(--primary-color);
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }

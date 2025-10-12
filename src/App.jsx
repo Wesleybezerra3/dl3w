@@ -6,7 +6,8 @@ import { DashboardLayout } from "./pages/DashboardLayout";
 import { Dashboard } from "./pages/Dashboard";
 import { SubjectSchedules } from "./pages/SubjectSchedules";
 import { SelectCourse } from "./componets/SelectCourse";
-import { ManagementUsers } from "./pages/ManagementUsers";
+import { Students } from "./pages/Students";
+import { PageClass } from "./pages/PageClass";
 
 
 
@@ -26,7 +27,8 @@ function App() {
            <Route path="/dashboard" element={<DashboardLayout/>}>
             <Route index element={<Dashboard/>}/>
             <Route path="disciplinashorarios" element={<SubjectSchedules/>}/>
-            <Route path="gerenciamentodeusuarios" element={<ManagementUsers/>}/>
+            <Route path="alunos" element={<Students/>}/>
+            <Route path="turmas" element={<PageClass/>}/>
 
           </Route>
 

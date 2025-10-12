@@ -1,4 +1,3 @@
-/* Estilo moderno e clean para a tabela de usuários */
 .containerFilters {
   display: flex;
   flex-direction: column;
@@ -121,4 +120,26 @@
 
 .table button:hover {
   background: #1e40af;
+}
+
+.addBtn{
+    width: 120px;
+    height: 30px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    font-size: 0.8em;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+    transition: opacity 0.3s ease;
+
+}
+.addBtn:hover{
+    opacity: 0.9;
 }

@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import { useAppContext } from "../../context/AppContext";
 
 export const SelectRole = () => {
-      const { setRole } = useAppContext();
 
     const [selectValue, setSelectValue] = useState();
     const navigate = useNavigate();
@@ -15,14 +14,10 @@ export const SelectRole = () => {
 
     const handleCargo = (e) => {
         e.preventDefault();
-
-        setRole(selectValue)
-        if (selectValue !== 'Administrador') {
+        console.log(selectValue)
+        if (selectValue) {
             navigate('/login')
             console.log(selectValue)
-        }
-        else {
-            navigate('/selectcourse')
         }
     }
   return (

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../../context/AppContext";
 
 export const Login = () => {
-  const {role} = useAppContext();
+  // const {role} = useAppContext();
   const navigate = useNavigate();
   const [loginData, setLoginData] = useState({
     email: "",
@@ -23,9 +23,9 @@ export const Login = () => {
       navigate("/dashboard");
     }
   };
-  useEffect(()=>{
-    console.log(role);
-  },{})
+  // useEffect(()=>{
+  //   console.log(role);
+  // },{})
   return (
     <>
       <main>

@@ -1,7 +1,7 @@
 import React, { use, useEffect } from "react";
 import style from "./style.module.css";
 import { Addbtn } from "../../componets/ui/Addbtn";
-import { CardSubject } from "../../componets/CardSubject";
+import { CardSubject } from "../../componets/Cards/CardSubject";
 import { Timetable } from "../../componets/Timetable";
 import { useAppContext } from "../../context/AppContext";
 

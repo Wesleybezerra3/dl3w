@@ -5,28 +5,28 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const CargoPage = () => {
-    const [selectValue, setSelectValue] = useState("");
-    const navigate = useNavigate();
-    const [btnClass, setBtnClass] = useState();
+    // const [selectValue, setSelectValue] = useState("");
+    // const navigate = useNavigate();
+    // // const [btnClass, setBtnClass] = useState();
 
 
 
-    const handleCargo = () => {
-        if (selectValue) {
-            navigate('/login')
-            console.log(selectValue)
-        }
-    }
-    useEffect(() => {
-        if (selectValue) {
-           setBtnClass('ativado')
-           return;
-        }
+    // const handleCargo = () => {
+    //     if (selectValue) {
+    //         navigate('/login')
+    //         console.log(selectValue)
+    //     }
+    // }
+    // // useEffect(() => {
+    // //     if (selectValue) {
+    // //        setBtnClass('ativado')
+    // //        return;
+    // //     }
 
-        if(!selectValue){
-            setBtnClass('')
-        }
-    }, [selectValue])
+    // //     if(!selectValue){
+    // //         setBtnClass('')
+    // //     }
+    // // }, [selectValue])
 
 
     return (
@@ -35,7 +35,7 @@ export const CargoPage = () => {
                 <section className={style.containerHero}>
                 </section>
                 <section className={style.containerLogin}>
-                    <form className={style.login}>
+                    <form className={style.login} onSubmit={handleCargo}>
 
                         <div className={style.headerLogin}>
                             <h1>Qual sua função?</h1>
@@ -50,7 +50,7 @@ export const CargoPage = () => {
                             </select>
                         </div>
                         <div className={style.containerBtn}>
-                            <button className={style.btnLogin}>
+                            <button className={style.btnLogin} type='submit'> 
                                 Continuar
                             </button>
                         </div>

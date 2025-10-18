@@ -17,7 +17,17 @@ const data = [
 export function GraficoDeBarras() {
   return (
     <ResponsiveContainer width="100%" height={500}>
-      <BarChart data={data} width={150} height={40}>
+      <BarChart
+        width={500}
+        height={300}
+        data={data}
+        margin={{
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+      >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="curso" />
         <YAxis />

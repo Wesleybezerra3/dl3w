@@ -4,6 +4,7 @@ import { FiltersFast } from "../../componets/FiltersFast";
 import { Addbtn } from "../../componets/ui/Addbtn";
 import { GraficPie } from "../../componets/GraficPie";
 import { NewStudent } from "../../componets/Modals/NewStudent";
+import { FilterIcon, Search } from "lucide-react";
 
 export const Students = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +22,17 @@ export const Students = () => {
           <section className={style.containerTable}>
             <div className={style.headerTable}>
               <p>Alunos</p>
-              <input type="text" />
+              <div className={style.searchClass}>
+                        <button className={style.btnFilter}>
+                            <FilterIcon size={16}/>
+                        </button>
+                    <input type="text" placeholder='Pesquisar Turma' autoComplete='off'/>
+                    <div>
+                        <button className={style.btnSearch}>
+                            <Search size={16}/>
+                        </button>
+                    </div>
+                </div>
               <button
                 className={style.addBtn}
                 onClick={() => {

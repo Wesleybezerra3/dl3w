@@ -26,8 +26,9 @@ export const PageClass = () => {
 
             <section className={style.contentClass}>
                 <div className={style.cardsClass}>
-                    <p>Turmas</p>
+                    
                     <div className={style.containerCards}>
+                        <p>Turmas</p>
                          <CardClass/>
                          <CardClass/>
                          <CardClass/>
@@ -39,9 +40,12 @@ export const PageClass = () => {
                     </div>
                 </div>
                  <div className={style.recentActivities}>
-                    <p>Atividades Recentes</p>
                     <aside>
-                        Atividades Recentes 
+                    <p>Atividades Recentes</p>
+
+                       <div>
+                        
+                       </div>
                     </aside>
                  </div>
             </section>

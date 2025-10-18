@@ -71,21 +71,55 @@
 
 .containerGraphs{
     width: 100%;
-    /* display: flex; */
-    /* align-items: center; */
+     display: flex; 
+     align-items: center; 
     /* justify-content: space-between; */
-    margin-top: 20px;
     border: var(--border-color) 1px solid;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    padding: 20px;
+    padding: 10px;
     font-family: 'Roboto', sans-serif;
     color: var(--text-color);
     font-size: 1.1em;
     font-weight: 600;
     
 }
+.containerGraphs > div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 .containerGraphs h1{
     margin-bottom: 20px;
     font-size: 1.2em;
+}
+
+.recentActivities {
+  grid-column: 2/3;
+  display: flex;
+  flex-direction: column;
+  /* height: 80%; */
+  border-radius: 5px;
+  font-family: 'Roboto', sans-serif;
+  color: var(--text-color);
+}
+.recentActivities p {
+  font-weight: 600;
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+.recentActivities aside{
+  border: 1px solid var(--border-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+ height: 100%;
+
+}
+.graphsArea{
+    display: grid;
+    grid-template-columns: 1fr 300px; /* Duas colunas de largura igual */
+    gap: 20px; /* Espaçamento entre as colunas */
+    height: 650px; /* Altura fixa para o contêiner */
 }

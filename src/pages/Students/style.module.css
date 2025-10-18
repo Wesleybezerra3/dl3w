@@ -143,3 +143,47 @@
 .addBtn:hover{
     opacity: 0.9;
 }
+
+.searchClass {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.searchClass input {
+  height: 40px;
+  width: 400px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  padding: 0 10px;
+  font-size: 1em;
+  outline: none;
+  color: var(--text-color);
+}
+
+.btnFilter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  background-color: transparent;
+  color: var(--text-color);
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.btnSearch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  /* margin-left: 10px; */
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border: none;
+  border-radius: 5px;
+  padding: 0 15px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+}

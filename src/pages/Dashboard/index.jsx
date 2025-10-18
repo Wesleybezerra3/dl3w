@@ -48,13 +48,24 @@ export const Dashboard = () => {
           />
         </div>
 
-        <div>
+        <div className={style.graphsArea}>
           <div className={style.containerGraphs}>
-            <h1>Distribuição de alunos por curso</h1>
-            <GraficoDeBarras />
+            <div>
+               <h1>Distribuição de alunos por curso</h1> 
+              <GraficoDeBarras />
+            </div>
 
-            <h1>Matrículas de alunos por mês</h1>
-            <GraficoDeLinhas />
+            <div>
+              <h1>Matrículas de alunos por mês</h1> 
+              <GraficoDeLinhas />
+            </div>
+          </div>
+
+          <div className={style.recentActivities}>
+            <aside>
+              <p>Atividades Recentes</p>
+              <div></div>
+            </aside>
           </div>
           {/* <GraficoDePizza/> */}
         </div>

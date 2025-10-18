@@ -18,7 +18,7 @@
 }
 .text{
     font-family: 'Roboto', sans-serif;
-    color: #1f1f1f;
+    color: var(--text-color);
     font-size: 1em;
     font-weight: 600;
     display: flex;

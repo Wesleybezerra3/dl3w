@@ -112,6 +112,8 @@
     align-items: center;
     justify-content: space-between;
     gap: 10px;
+    overflow-y: auto;
+
 }
 .menu h2{
     font-family: 'Montserrat', sans-serif;

@@ -15,9 +15,15 @@ export const SelectRole = () => {
     const handleCargo = (e) => {
         e.preventDefault();
         console.log(selectValue)
-        if (selectValue) {
+        if (selectValue === "Administrador") {
             navigate('/login')
             console.log(selectValue)
+            return;
+        }
+        if (selectValue === "Aluno") {
+            navigate('/student/acess')
+            console.log(selectValue)
+            return;
         }
     }
   return (

@@ -18,7 +18,7 @@ const data = [
 
 export function GraficoDeLinhas() {
   return (
-    <ResponsiveContainer width="100%" height={500}>
+    <ResponsiveContainer width="100%" height='100%'>
        <LineChart
         width={500}
         height={300}

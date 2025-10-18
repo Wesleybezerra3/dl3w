@@ -1,66 +1,81 @@
 import style from "./style.module.css";
-import logo from "../../assets/logo.png";
+import logo from "../../../assets/logo.png";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppContext } from "../../context/AppContext";
+import { useAppContext } from "../../../context/AppContext";
 
-export const Login = () => {
+export const PasswordDefine = () => {
   // const {role} = useAppContext();
   const navigate = useNavigate();
-  const [loginData, setLoginData] = useState({
+
+  const [definePasswordData, setDefinePassword] = useState({
     matricula: "",
     password: "",
+    confirmPassword: "",
   });
 
   const handleObj = (e) => {
     const { name, value } = e.target;
-    setLoginData({ ...loginData, [name]: value });
+    setDefinePassword({ ...definePasswordData, [name]: value });
   };
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (loginData.matricula && loginData.password) {
-      navigate("/adm/dashboard");
+    if (definePasswordData.matricula && definePasswordData.password && definePasswordData.confirmPassword) {
+        if(definePasswordData.password !== definePasswordData.confirmPassword){
+            alert("As senhas não coincidem!");
+            return;
+        }
+      navigate("/student/login");
     }
   };
-  // useEffect(()=>{
-  //   console.log(role);
-  // },{})
+
   return (
     <>
       <main>
         <form className={style.login} onSubmit={handleLogin}>
           <div className={style.headerLogin}>
-            <h1>Entre com sua conta</h1>
+            <h1>Defina Sua Senha</h1>
             <img src={logo} alt="" />
           </div>
           <div className={style.containerInputs}>
             <div>
-              <label htmlFor="text">Mátricula</label>
+              <label htmlFor="matricula">Mátricula</label>
               <input
                 type="text"
                 name="matricula"
                 className={style.input}
                 placeholder="Sua Matrícula"
-                value={loginData.matricula}
+                value={definePasswordData.matricula}
                 onChange={handleObj}
               />
             </div>
             <div>
-              <label htmlFor="email">Matrícula</label>
+              <label htmlFor="password">senha</label>
               <input
                 type="password"
                 name="password"
                 className={style.input}
                 placeholder="Sua Senha"
-                value={loginData.password}
+                value={definePasswordData.password}
+                onChange={handleObj}
+              />
+            </div>
+             <div>
+              <label htmlFor="confirmPassword">Confirme sua senha</label>
+              <input
+                type="password"
+                name="confirmPassword"
+                className={style.input}
+                placeholder="Confirme Sua Senha"
+                value={definePasswordData.confirmPassword}
                 onChange={handleObj}
               />
             </div>
           </div>
           <div className={style.containerBtn}>
             <button type="submit" className={style.btnLogin}>
-              Entrar
+              Definir
             </button>
           </div>
         </form>

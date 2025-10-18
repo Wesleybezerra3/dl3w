@@ -31,7 +31,7 @@ export const MenuSide = () => {
               <h2><span>Inicio</span></h2>
               <ul>
                 <li>
-                  <a href="/dashboard" className={style.links}>
+                  <a href="/adm/dashboard" className={style.links}>
                     <PieChart className={style.icon} /> <span>Dashboard</span>
                   </a>
                 </li>
@@ -41,7 +41,7 @@ export const MenuSide = () => {
               <h2><span>Gestão</span></h2>
               <ul>
                 <li>
-                  <a href="/dashboard/alunos" className={style.links}>
+                  <a href="/adm/dashboard/alunos" className={style.links}>
                     <Backpack className={style.icon} />{" "}
                     <span>
                       Alunos
@@ -49,7 +49,7 @@ export const MenuSide = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="/dashboard/professores" className={style.links}>
+                  <a href="/adm/dashboard/professores" className={style.links}>
                     <Users2 className={style.icon} />{" "}
                     <span>
                       Professores
@@ -57,7 +57,7 @@ export const MenuSide = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="/dashboard/disciplinashorarios" className={style.links}>
+                  <a href="/adm/dashboard/disciplinashorarios" className={style.links}>
                     {" "}
                     <BookTextIcon className={style.icon} />
                     <span>Disciplinas e Horários</span>
@@ -71,7 +71,7 @@ export const MenuSide = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="/dashboard/turmas" className={style.links}>
+                  <a href="/adm/dashboard/turmas" className={style.links}>
                     {" "}
                     <UserSquare className={style.icon} />
                     <span>Turmas</span>

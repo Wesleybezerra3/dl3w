@@ -17,13 +17,13 @@ export const Dashboard = () => {
       <section className={style.container}>
         <div className={style.infoArea}>
           <CardDashboard
-            text="Alunos Matriculados"
+            text="Alunos"
             number="100"
             backColor="#0A51BD"
             icon={studentIcon}
           />
           <CardDashboard
-            text="Professores Matriculados"
+            text="Professores"
             number="10"
             backColor="#038B20"
             icon={teacherIcon}
@@ -61,12 +61,12 @@ export const Dashboard = () => {
             </div>
           </div>
 
-          <div className={style.recentActivities}>
+          {/* <div className={style.recentActivities}>
             <aside>
               <p>Atividades Recentes</p>
               <div></div>
             </aside>
-          </div>
+          </div> */}
           {/* <GraficoDePizza/> */}
         </div>
         {/* <div className={style.scheduleArea}>

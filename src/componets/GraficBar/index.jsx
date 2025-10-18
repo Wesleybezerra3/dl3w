@@ -1,7 +1,8 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { abbreviateCourse } from '../../utils/abbreviations';
 
 const data = [
-  { curso: 'ADS', alunos: 1200 },
+  { curso: 'Análise e desenvolvimento de sistemas', alunos: 1200 },
   { curso: 'Direito', alunos: 900 },
   { curso: 'Eng. Civil', alunos: 700 },
   { curso: 'Administração', alunos: 500 },
@@ -16,7 +17,7 @@ const data = [
 
 export function GraficoDeBarras() {
   return (
-    <ResponsiveContainer width="100%" height={500}>
+    <ResponsiveContainer width="100%" height='100%'>
       <BarChart
         width={500}
         height={300}
@@ -29,9 +30,9 @@ export function GraficoDeBarras() {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="curso" />
-        <YAxis />
-        <Tooltip />
+  <XAxis dataKey="curso" tickFormatter={(value) => abbreviateCourse(value)} />
+  <YAxis />
+  <Tooltip labelFormatter={(label) => `Curso: ${label}`} />
         <Legend />
         <Bar dataKey="alunos" fill="#325EA1" radius={[0, 0, 0, 0]} />
       </BarChart>

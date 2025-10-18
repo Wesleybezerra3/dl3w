@@ -1,0 +1,35 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.containerBtns{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    width: 400px;
+    /* outline: auto; */
+}
+.btnLogin,
+.btnFirstAcess{
+    padding: 10px;
+    width: 150px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9em;
+}
+.btnFirstAcess{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+.btnLogin{
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}

@@ -1,10 +1,10 @@
 import style from "./style.module.css";
-import logo from "../../assets/logo.png";
+import logo from "../../../assets/logo.png";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppContext } from "../../context/AppContext";
+import { useAppContext } from "../../../context/AppContext";
 
-export const Login = () => {
+export const LoginStudent = () => {
   // const {role} = useAppContext();
   const navigate = useNavigate();
   const [loginData, setLoginData] = useState({
@@ -20,7 +20,7 @@ export const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     if (loginData.matricula && loginData.password) {
-      navigate("/adm/dashboard");
+      navigate("/student/plataform");
     }
   };
   // useEffect(()=>{
@@ -36,7 +36,7 @@ export const Login = () => {
           </div>
           <div className={style.containerInputs}>
             <div>
-              <label htmlFor="text">Mátricula</label>
+              <label htmlFor="text">Matrícula</label>
               <input
                 type="text"
                 name="matricula"
@@ -47,7 +47,7 @@ export const Login = () => {
               />
             </div>
             <div>
-              <label htmlFor="email">Matrícula</label>
+              <label htmlFor="password">Senha</label>
               <input
                 type="password"
                 name="password"

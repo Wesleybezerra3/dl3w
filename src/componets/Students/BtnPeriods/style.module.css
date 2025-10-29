@@ -1,0 +1,9 @@
+.btn {
+    background-color: var(--primary-color);
+    color: var(--secudary-color);
+    font-family: 'Roboto', sans-serif;
+    padding: 8px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}

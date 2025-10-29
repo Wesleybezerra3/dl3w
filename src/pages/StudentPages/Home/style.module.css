@@ -2,13 +2,15 @@
     width: 100%;
     margin-top: 10px;
 }
+
 .containerWelcome h1 {
     font-size: 1em;
     font-weight: 600;
     color: var(--text-color);
     font-family: 'Roboto', sans-serif;
 }
-.courseName{
+
+.courseName {
     font-size: 0.6em;
     font-weight: 500;
     color: var(--primary-color);
@@ -16,37 +18,41 @@
     font-family: 'Roboto', sans-serif;
     text-align: center;
 }
+
 .carroselPeriods {
     margin-top: 5px;
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 2em;
 }
 
-.viewport{
-    width: 240px; /* largura visível do período */
+.viewport {
+    width: 240px;
+    /* largura visível do período */
     overflow: hidden;
 }
 
-.track{
+.track {
     display: flex;
     transition: transform 400ms ease;
 }
 
-.slide{
+.slide {
     min-width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.periodBtn{
-    padding: 8px 16px;
-    background: var(--secudary-color);
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    font-weight: 600;
-    color: var(--text-color);
+.btnPeriods {
+    background-color: transparent;
+    border: none;
+    outline: none;
     cursor: pointer;
+}
+
+.iconBtn {
+    color: var(--primary-color);
 }

@@ -1,17 +1,20 @@
-.header{
+.header {
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: space-between;
     position: fixed;
-    top: 0;
+    z-index: 999;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
     padding: 10px;
+    background-color: white;
 }
-.header img{
+
+.header img {
     width: 100px;
 }
-header button{
+
+header button {
     background-color: transparent;
     border: none;
     cursor: pointer;

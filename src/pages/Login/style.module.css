@@ -1,5 +1,6 @@
 .login{
     width: 80%;
+    max-width: 420px;
     min-width: 380px;
     display: flex;
     justify-content: center;

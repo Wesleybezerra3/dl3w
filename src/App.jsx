@@ -12,6 +12,8 @@ import { FirstAcess } from "./pages/StudentPages/FirstAcess";
 import { LoginStudent } from "./pages/StudentPages/Login";
 import { PasswordDefine } from "./pages/StudentPages/passwordDefine";
 import { PlataformLayout } from "./pages/StudentPages/PlataformLayaout";
+import { HomeStudent } from "./pages/StudentPages/Home";
+import { MyCourse } from "./pages/StudentPages/MyCourse";
 
 function App() {
   return (
@@ -47,7 +49,9 @@ function App() {
             <Route path="student">
               
               <Route path="plataform" element={<PlataformLayout/>}>
-              
+                <Route index element={<HomeStudent/>} />
+                <Route path="home" element={<HomeStudent/>} />
+                <Route path="mycourse" element={<MyCourse/>} />
               </Route>
             </Route>
         </Routes>

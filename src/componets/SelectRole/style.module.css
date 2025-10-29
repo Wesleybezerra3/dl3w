@@ -1,6 +1,7 @@
 .selectRoleForm{
-    width: 90%;
+    width: 100%;
     min-width: 350px;
+    max-width: 400px;
     display: flex;
     justify-content: center;
     flex-direction: column;

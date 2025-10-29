@@ -47,7 +47,7 @@ export const Login = () => {
               />
             </div>
             <div>
-              <label htmlFor="email">Matrícula</label>
+              <label htmlFor="password">Senha</label>
               <input
                 type="password"
                 name="password"

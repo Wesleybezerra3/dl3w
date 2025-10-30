@@ -12,7 +12,7 @@ export const CardDashboard = ({backColor, number, icon, text, textSecudary}) => 
             <p className={style.text}>
                 {text}
                 <span>{number}</span>
-                {textSecudary || 'Ao total'}
+                {textSecudary}
             </p>
         </div>
         <div className={style.containerIcon} style={{backgroundColor:backColor}}>

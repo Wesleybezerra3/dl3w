@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import style from "./style.module.css";
 import { BookCopyIcon, Home, LogOut, PieChart, X } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const MenuSide = ({ visible, onClose }) => {
   const navigate = useNavigate();
@@ -43,18 +43,18 @@ export const MenuSide = ({ visible, onClose }) => {
               <div className={style.start}>
                 <ul>
                   <li>
-                    <a href="/student/plataform/home" className={style.links}>
+                    <Link to="/student/plataform/home" className={style.links}>
                       <Home className={style.icon} /> <span>Inicio</span>
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
               <div className={style.management}>
                 <ul>
                   <li>
-                    <a href="/student/plataform/mycourse" className={style.links}>
+                    <Link to="/student/plataform/mycourse" className={style.links}>
                       <BookCopyIcon className={style.icon} /> <span>Meu Curso</span>
-                    </a>
+                    </Link>
                   </li>
                 
                 </ul>

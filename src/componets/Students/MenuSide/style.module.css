@@ -5,7 +5,7 @@
     height: 100vh;
     background-color: var(--secudary-color);
     border-left: 1px solid var(--border-color);
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     display: flex;

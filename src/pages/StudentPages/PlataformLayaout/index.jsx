@@ -37,6 +37,10 @@ export const PlataformLayout = () => {
             </section>
 
         </main>
+
+        <footer>
+
+        </footer>
     </>
   )
 }

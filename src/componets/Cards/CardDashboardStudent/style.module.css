@@ -1,0 +1,73 @@
+.card{
+    position: relative;
+    width: 100%;
+    height: 120px;
+    border: var(--border-color) 1px solid;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.062);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    border: 1px solid var(--border-color);
+
+}
+.card:hover{
+    scale: 1.05;
+}
+.text{
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+    font-size: 1em;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+}
+.text span{
+    font-size: 1.8em;
+    font-weight: 700;
+}
+.containerIcon{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+/* .containerIcon img{
+    width: 30px;
+    height: 30px;
+} */
+/* .maker{
+    width: 100%;
+    height: 5px;
+    background-color: var(--primary-color);
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+} */
+.goodNote{
+    color: #6ca80a;
+}
+.averageNote{
+    color: #db9703;
+}
+.weakNote{
+    color: #ff0000;
+}
+
+.goodPresence{
+    color: #6ca80a;
+}
+.averagePresence{
+    color: #db9703;
+}
+.weakPresence{
+    color: #ff0000;
+}

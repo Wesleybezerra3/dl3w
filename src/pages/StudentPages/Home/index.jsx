@@ -2,7 +2,14 @@ import React, { useState } from 'react'
 import style from './style.module.css'
 import { BtnPeriods } from '../../../componets/Students/BtnPeriods'
 import { ArrowLeftCircleIcon, ArrowRightCircle } from 'lucide-react';
-import { CardDashboard } from '../../../componets/Cards/CardDashboard';
+
+import calendar from '../../../assets/icons/Calendar.png'
+import note from '../../../assets/icons/Note.png'
+import goodNotes from '../../../assets/icons/GoodNotes.png'
+import arrow from '../../../assets/icons/Arrow.png'
+import { CardDashboardStudent } from '../../../componets/Cards/CardDashboardStudent';
+import { Link } from 'react-router-dom';
+
 
 export const HomeStudent = () => {
   const periods = ['2025.1','2025.2','2026.3','2026.4'];
@@ -16,7 +23,7 @@ export const HomeStudent = () => {
      <section className={style.containerWelcome}>
         <h1>Olá! Wesley Bezerra👋</h1>
      </section>
-     <section className={style.container}>
+     <section >
       <div className={style.courseName}>
         <h2>Análise e desenvolvimento de sistemas</h2>
       </div>
@@ -46,9 +53,24 @@ export const HomeStudent = () => {
 
      <section className='container'>
 
-              <CardDashboard backColor={'#038B20'} number={'91%'} icon={''} text={'Presença'}  textSecudary={''}/>
-              <CardDashboard />
-              <CardDashboard />
+              <CardDashboardStudent backColor={'#038B20'} number={91} icon={calendar} text={'Presença'}  textSecudary={'Global'}/>
+              <CardDashboardStudent backColor={'#0A51BD'} number={8.5} icon={note} text={'Média'}  textSecudary={'Global'}/>
+              <CardDashboardStudent backColor={'#999514'} number={6.8} icon={goodNotes} text={'Ultima Nota'}  textSecudary={'Banco de dados'}/>
+     </section>
+
+     <section className='container'>
+      <div className={style.bottomMenu}>
+            <button className={style.btnActive}>
+              Sobre o Curso
+              <img src={arrow} alt="" />
+            </button>
+          
+            <button className={style.btnActive}>
+              Quadro de Horários
+              <img src={arrow} alt="" />
+            </button>
+
+      </div>
      </section>
     </>
   )

@@ -21,12 +21,14 @@ export const Dashboard = () => {
             number="100"
             backColor="#0A51BD"
             icon={studentIcon}
+            textSecudary=" matriculados"
           />
           <CardDashboard
             text="Professores"
             number="10"
             backColor="#038B20"
             icon={teacherIcon}
+            textSecudary=" ativos"
           />
           {/* <CardDashboard
             text="Disciplinas"
@@ -39,12 +41,14 @@ export const Dashboard = () => {
             number="10"
             backColor="#FF6C02"
             icon={course}
+            textSecudary=" disponíveis"
           />
           <CardDashboard
             text="Salas"
             number="15"
             backColor="#839426ff"
             icon={door}
+            textSecudary=" cadastradas"
           />
         </div>
 

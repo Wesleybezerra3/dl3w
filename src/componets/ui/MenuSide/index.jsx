@@ -31,9 +31,9 @@ export const MenuSide = () => {
               <h2><span>Inicio</span></h2>
               <ul>
                 <li>
-                  <a href="/adm/dashboard" className={style.links}>
+                  <Link to="/adm/dashboard" className={style.links}>
                     <PieChart className={style.icon} /> <span>Dashboard</span>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -41,55 +41,55 @@ export const MenuSide = () => {
               <h2><span>Gestão</span></h2>
               <ul>
                 <li>
-                  <a href="/adm/dashboard/alunos" className={style.links}>
+                  <Link to="/adm/dashboard/alunos" className={style.links}>
                     <Backpack className={style.icon} />{" "}
                     <span>
                       Alunos
                     </span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/adm/dashboard/professores" className={style.links}>
+                  <Link to="/adm/dashboard/professores" className={style.links}>
                     <Users2 className={style.icon} />{" "}
                     <span>
                       Professores
                     </span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/adm/dashboard/disciplinashorarios" className={style.links}>
+                  <Link to="/adm/dashboard/disciplinashorarios" className={style.links}>
                     {" "}
                     <BookTextIcon className={style.icon} />
                     <span>Disciplinas e Horários</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="" className={style.links}>
+                  <Link to="" className={style.links}>
                     {" "}
                     <DoorOpen className={style.icon} />
                     <span>Salas</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/adm/dashboard/turmas" className={style.links}>
+                  <Link to="/adm/dashboard/turmas" className={style.links}>
                     {" "}
                     <UserSquare className={style.icon} />
                     <span>Turmas</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="" className={style.links}>
+                  <Link to="" className={style.links}>
                     {" "}
                     <CheckSquare className={style.icon} />
                     <span>Presenças</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="" className={style.links}>
+                  <Link to="" className={style.links}>
                     {" "}
                     <NotepadText className={style.icon} />
                     <span>Relatórios e Logs</span>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

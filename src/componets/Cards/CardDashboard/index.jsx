@@ -1,6 +1,6 @@
 import React from 'react'
 import style from './style.module.css'
-import studentIcon from '../../../assets//icons/StudentIcon.png'
+
 
 export const CardDashboard = ({backColor, number, icon, text, textSecudary}) => {
   return (

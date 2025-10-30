@@ -1,11 +1,11 @@
-.menuSide{
+.menuSide {
     display: flex;
     flex-direction: column;
     width: 250px;
     height: 100vh;
     background-color: var(--secudary-color);
     border-left: 1px solid var(--border-color);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     display: flex;
@@ -16,53 +16,62 @@
     transform: translateX(-100%);
     transition: transform 300ms ease;
 }
-.menuSide.open{
+
+.menuSide.open {
     transform: translateX(0);
 }
-.back{
+
+.back {
     position: fixed;
-    inset: 0; /* top:0; right:0; bottom:0; left:0 */
-    background-color: rgba(0,0,0,0.2);
-    z-index: 900;
+    inset: 0;
+    /* top:0; right:0; bottom:0; left:0 */
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1000;
     opacity: 0;
     transition: opacity 300ms ease;
-    pointer-events: none; /* bloqueia cliques quando invisível */
+    pointer-events: none;
+    /* bloqueia cliques quando invisível */
 }
-.back.show{
+
+.back.show {
     opacity: 1;
     pointer-events: auto;
 }
-.headerMenu{
+
+.headerMenu {
     padding: 2px;
     width: 100%;
     height: 60px;
     display: flex;
     align-items: center;
     gap: 0.5em;
-
     border-bottom: 1px solid var(--border-color);
     margin-top: 10px;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
 }
-.infoUser{
+
+.infoUser {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
 }
-.infoUser p{
+
+.infoUser p {
     font-family: 'Roboto', sans-serif;
     font-size: 1em;
     font-weight: 500;
     color: var(--text-color);
 }
-.infoUser span{
+
+.infoUser span {
     font-family: 'Roboto', sans-serif;
     font-size: 0.9em;
     font-weight: 500;
     color: var(--text-color);
 }
-.editProfile{
+
+.editProfile {
     cursor: pointer;
     width: 30px;
     height: 30px;
@@ -71,7 +80,8 @@
     justify-content: center;
     color: var(--text-color);
 }
-.profilePhoto{
+
+.profilePhoto {
     /* margin-right: 10px; */
     width: 50px;
     height: 50px;
@@ -80,7 +90,7 @@
     padding: 10px;
 }
 
-.menu{
+.menu {
     width: 100%;
     height: 100%;
     display: flex;
@@ -89,27 +99,31 @@
     justify-content: space-between;
     /* gap: 10px; */
     overflow-y: auto;
-
 }
+
+
 /* .menu h2{
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 1em;
     color: var(--text-color);
 } */
-.menu ul{
+
+.menu ul {
     display: flex;
     flex-direction: column;
     gap: 15px;
     list-style: none;
 }
-.optionsMenu{
+
+.optionsMenu {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-.links{
+
+.links {
     width: 100%;
     display: flex;
     justify-content: left;
@@ -125,18 +139,21 @@
     font-size: 0.9em;
     font-weight: 500;
 }
-.links:hover{
+
+.links:hover {
     background-color: var(--primary-color);
     color: var(--white-color);
     /* border: 1px solid var(--primary-color); */
 }
-.logout{
+
+.logout {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.logout button{
+
+.logout button {
     display: flex;
     justify-content: left;
     align-items: center;
@@ -154,7 +171,8 @@
     cursor: pointer;
     transition: all 0.5s ease;
 }
-.logout button:hover{
+
+.logout button:hover {
     background-color: var(--primary-color);
     color: var(--white-color);
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./style.module.css";
 import { Backpack, BookTextIcon, CheckSquare, CogIcon, DoorOpen, Edit2, LogOut, NotepadText, PieChart, Users2, UserSquare } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const MenuSide = () => {
   const navigate = useNavigate();

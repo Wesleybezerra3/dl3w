@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import style from "./style.module.css";
+import api from "../../../services/api";
 
 export const NewStudent = ({ visible, onClose }) => {
   const cursos = [
@@ -16,7 +17,7 @@ export const NewStudent = ({ visible, onClose }) => {
     "Nutrição",
   ];
   const turmas = [
-    "0Ad20-4° - N",
+    1,
     "0Ad20-4° - T",
     "0Ad21-3° - N",
     "0Ad21-3° - T",
@@ -30,6 +31,17 @@ export const NewStudent = ({ visible, onClose }) => {
     turma: "",
   });
 
+  const NewStudent = async ()=>{
+    console.log(form);
+    try{
+      const response = await api.post('/alunos', form)
+      console.log(response.data);
+
+    }catch(err){
+      console.log(err);
+    }
+  }
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -37,6 +49,16 @@ export const NewStudent = ({ visible, onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Aqui você pode adicionar a lógica de envio do formulário
+    NewStudent();
+    setForm({
+      nome: "",
+      cpf: "",
+      email: "",
+      data_nascimento: "",
+      curso: "",
+      turma: "",
+    });
+
     onClose();
   };
 
@@ -73,12 +95,34 @@ export const NewStudent = ({ visible, onClose }) => {
             />
           </div>
           <div className={style.inputGroup}>
+            <label htmlFor="email">E-mail</label>
+            <input
+              name="email"
+              type="email"
+              placeholder="Digite o e-mail do aluno"
+              value={form.email}
+              onChange={handleChange}
+              autoComplete="off"
+            />
+          </div>
+          <div className={style.inputGroup}>
             <label htmlFor="cpf">CPF</label>
             <input
               name="cpf"
               type="text"
               placeholder="Digite o cpf do aluno"
               value={form.cpf}
+              onChange={handleChange}
+              autoComplete="off"
+            />
+          </div>
+          <div className={style.inputGroup}>
+            <label htmlFor="data">Data de nascimenteo</label>
+            <input
+              name="data_nascimento"
+              type="text"
+              placeholder="Digite a data de nascimento"
+              value={form.data_nascimento}
               onChange={handleChange}
               autoComplete="off"
             />

@@ -5,12 +5,16 @@ import React, {
   useEffect,
   useState,
 } from "react";
+import api from "../services/api";
 
 // Cria o contexto para o fluxo
 export const AppContext = createContext();
 
 // Provedor do contexto
 export const ContextProvider = ({ children }) => {
+  const [students, setStudents] = useState([]);
+  const [classes, setClasses] = useState([]);
+
   // const [role, setRole] = useState(() => {
   //   const saved = localStorage.getItem("role");
   //   return saved ? JSON.parse(saved) : null;
@@ -29,8 +33,39 @@ export const ContextProvider = ({ children }) => {
   //   localStorage.setItem("course", JSON.stringify(course));
   // }, [course]);
 
+  useEffect(() => {
+    const getAllStudents = async () => {
+      try {
+        const response = await api.get("/alunos");
+        setStudents(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getAllStudents();
+  }, []);
+
+  useEffect(() => {
+    const getClasses = async () => {
+      try {
+        const response = await api.get("/turmas");
+        setClasses(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getClasses();
+  }, []);
+
   return (
-    <AppContext.Provider value={{}}>
+    <AppContext.Provider
+      value={{
+        students,
+        setStudents,
+        classes,
+        setClasses,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );

@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./style.module.css";
 import api from "../../../services/api";
+import { useAppContext } from "../../../context/AppContext";
 
 export const NewStudent = ({ visible, onClose }) => {
+  const { classes } = useAppContext();
   const cursos = [
     "ADS",
     "Direito",
@@ -23,6 +25,7 @@ export const NewStudent = ({ visible, onClose }) => {
     "0Ad21-3° - T",
     "0Ad22-2° - N",
   ];
+ 
 
   const [form, setForm] = useState({
     nome: "",
@@ -146,9 +149,9 @@ export const NewStudent = ({ visible, onClose }) => {
               <option value="" selected disabled>
                 Selecione
               </option>
-              {turmas.map((turma, index) => (
-                <option key={index} value={turma}>
-                  {turma}
+              {classes.map((classe, index) => (
+                <option key={index} value={classe.id}>
+                  {classe.nome}
                 </option>
               ))}
             </select>

@@ -1,14 +1,23 @@
-import React, { useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import style from "./style.module.css";
 import { FiltersFast } from "../../componets/FiltersFast";
 import { Addbtn } from "../../componets/ui/Addbtn";
 import { GraficPie } from "../../componets/GraficPie";
 import { NewStudent } from "../../componets/Modals/NewStudent";
 import { FilterIcon, Search } from "lucide-react";
+import api from "../../services/api";
+import { useAppContext } from "../../context/AppContext";
+
 
 export const Students = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { students, setStudents, classes } = useAppContext();
+  
 
+  useEffect(() => {
+    console.log(students);
+  }, [students]);
+  
   return (
     <>
       <section className="container">
@@ -55,7 +64,20 @@ export const Students = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  {students.map((student) => (
+                    <tr key={student.id}>
+                      <td>{student.matricula}</td>
+                      <td>{student.nome}</td>
+                      <td>{student.Turma?.Curso?.nome}</td>
+                      <td>{student.Turma?.nome}</td>
+                      <td>{student.situacao}</td>
+                      <td>
+                        <button className={style.btnTable}>Editar</button>
+                        <button className={style.btnTable}>Excluir</button>
+                      </td>
+                    </tr>
+                  ))}
+                  {/* <tr>
                     <td>2023001</td>
                     <td>João Silva</td>
                     <td>Análise e Desenvolvimento de sistemas</td>
@@ -185,8 +207,8 @@ export const Students = () => {
                     <td>
                       <button className={style.btnTable}>Editar</button>
                       <button className={style.btnTable}>Excluir</button>
-                    </td>
-                  </tr>
+                    </td> */}
+                  {/* </tr> */}
                 </tbody>
               </table>
             </div>

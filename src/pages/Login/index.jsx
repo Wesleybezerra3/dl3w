@@ -3,13 +3,14 @@ import logo from "../../assets/logo.png";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../../context/AppContext";
+import api from "../../services/api";
 
 export const Login = () => {
   // const {role} = useAppContext();
   const navigate = useNavigate();
   const [loginData, setLoginData] = useState({
-    matricula: "",
-    password: "",
+    usuario: "",
+    senha: "",
   });
 
   const handleObj = (e) => {
@@ -17,12 +18,46 @@ export const Login = () => {
     setLoginData({ ...loginData, [name]: value });
   };
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    if (loginData.matricula && loginData.password) {
-      navigate("/adm/dashboard");
-    }
-  };
+  const saveToken = (token) => {
+      const expiration = Date.now() + 60 * 60 * 1000; // 1 hora (em ms)
+      localStorage.setItem("token", token);
+      localStorage.setItem("token_expiration", expiration.toString());
+    };
+  
+    const handleLogin = async (e) => {
+      e.preventDefault();
+      if (Object.values(loginData).some((field) => !field)) {
+        alert("Por favor, preencha todos os campos");
+        return;
+      }
+  
+      login(loginData).then(() => {
+        setTimeout(() => {
+          navigate("/adm/dashboard");
+        }, 1000);
+      });
+    };
+  
+    const login = async (data) => {
+      try {
+        const response = await api.post("/adm/login", data, {
+          headers: { "Content-Type": "application/json" },
+        });
+        const token = response.data.token;
+  
+        if (response.status !== 200) {
+          throw new Error("Erro ao logar usuario");
+        }
+        if(localStorage.getItem("token")){
+          localStorage.removeItem("token");
+        }
+        saveToken(token);
+        console.log("Usuario logado com sucesso", response.data);
+      } catch (err) {
+        console.log("Erro ao logar usuario", err);
+        return null;
+      }
+    };
   // useEffect(()=>{
   //   console.log(role);
   // },{})
@@ -36,24 +71,24 @@ export const Login = () => {
           </div>
           <div className={style.containerInputs}>
             <div>
-              <label htmlFor="text">Mátricula</label>
+              <label htmlFor="usuario">Usuário</label>
               <input
                 type="text"
-                name="matricula"
+                name="usuario"
                 className={style.input}
-                placeholder="Sua Matrícula"
+                placeholder="Seu Usuário"
                 value={loginData.matricula}
                 onChange={handleObj}
               />
             </div>
             <div>
-              <label htmlFor="password">Senha</label>
+              <label htmlFor="senha">Senha</label>
               <input
                 type="password"
-                name="password"
+                name="senha"
                 className={style.input}
                 placeholder="Sua Senha"
-                value={loginData.password}
+                value={loginData.senha}
                 onChange={handleObj}
               />
             </div>

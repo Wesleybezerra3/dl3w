@@ -14,6 +14,7 @@ export const AppContext = createContext();
 export const ContextProvider = ({ children }) => {
   const [students, setStudents] = useState([]);
   const [classes, setClasses] = useState([]);
+  const [user, setUser] = useState(null);
 
   // const [role, setRole] = useState(() => {
   //   const saved = localStorage.getItem("role");
@@ -64,6 +65,8 @@ export const ContextProvider = ({ children }) => {
         setStudents,
         classes,
         setClasses,
+        user,
+        setUser,
       }}
     >
       {children}

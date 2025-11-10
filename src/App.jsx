@@ -14,6 +14,7 @@ import { PasswordDefine } from "./pages/StudentPages/passwordDefine";
 import { PlataformLayout } from "./pages/StudentPages/PlataformLayaout";
 import { HomeStudent } from "./pages/StudentPages/Home";
 import { MyCourse } from "./pages/StudentPages/MyCourse";
+import { PrivateRoutes } from "./pages/PrivateRoutes";
 
 function App() {
   return (
@@ -24,18 +25,18 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<SelectRole />} />
             <Route path="selectcourse" element={<SelectCourse />} />
-            
+
             <Route path="login" element={<Login />} />
 
             <Route path="student">
-              <Route path="acess" element={<FirstAcess/>} />
-              <Route path="login" element={<LoginStudent/>} />
-              <Route path="passworddefine" element={<PasswordDefine/>} />
-            </Route>  
-
+              <Route path="acess" element={<FirstAcess />} />
+              <Route path="login" element={<LoginStudent />} />
+              <Route path="passworddefine" element={<PasswordDefine />} />
+            </Route>
           </Route>
 
-           <Route path="adm">
+          <Route element={<PrivateRoutes />}>
+            <Route path="adm">
               <Route path="dashboard" element={<DashboardLayout />}>
                 <Route index element={<Dashboard />} />
                 <Route
@@ -47,13 +48,13 @@ function App() {
               </Route>
             </Route>
             <Route path="student">
-              
-              <Route path="plataform" element={<PlataformLayout/>}>
-                <Route index element={<HomeStudent/>} />
-                <Route path="home" element={<HomeStudent/>} />
-                <Route path="mycourse" element={<MyCourse/>} />
+              <Route path="plataform" element={<PlataformLayout />}>
+                <Route index element={<HomeStudent />} />
+                <Route path="home" element={<HomeStudent />} />
+                <Route path="mycourse" element={<MyCourse />} />
               </Route>
             </Route>
+          </Route>
         </Routes>
       </BrowserRouter>
     </>

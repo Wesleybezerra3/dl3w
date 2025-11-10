@@ -38,8 +38,14 @@ export const NewStudent = ({ visible, onClose }) => {
     console.log(form);
     try{
       const response = await api.post('/alunos', form)
+      if(response.status !== 201){
+        alert("Erro ao criar novo aluno");
+        throw new Error("Erro ao criar novo aluno");
+      }
+      if(response.status === 201){
+        alert("Aluno criado com sucesso!");
+      }
       console.log(response.data);
-
     }catch(err){
       console.log(err);
     }

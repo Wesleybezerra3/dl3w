@@ -3,11 +3,14 @@ import { HeaderStudent } from "../../../componets/Students/Header";
 import style from "./style.module.css";
 import { Outlet } from "react-router-dom";
 import { MenuSide } from "../../../componets/Students/MenuSide";
-import { Bell, Menu } from "lucide-react";
+import { Bell, Menu, ArrowLeftCircleIcon, ArrowRightCircle } from "lucide-react";
+import { BtnPeriods } from '../../../componets/Students/BtnPeriods';
 import logo from "../../../assets/logo2.png";
+import { useAppContext } from "../../../context/AppContext";
 
 export const PlataformLayout = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const {user} = useAppContext();
 
   const periods = ["2025.1", "2025.2", "2026.3", "2026.4"];
   const [current, setCurrent] = useState(0);
@@ -43,11 +46,11 @@ export const PlataformLayout = () => {
       <MenuSide visible={isOpen} onClose={() => setIsOpen(!isOpen)} />
       <main>
         <section className={style.containerWelcome}>
-          <h1>Olá! Wesley Bezerra👋</h1>
+          <h1>Olá! {user.nome}👋</h1>
         </section>
         <section>
           <div className={style.courseName}>
-            <h2>Análise e desenvolvimento de sistemas</h2>
+            <h2>{user.turma?.Curso?.nome}</h2>
           </div>
           <div className={style.carroselPeriods}>
             <button

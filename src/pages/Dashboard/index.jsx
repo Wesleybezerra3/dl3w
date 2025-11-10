@@ -9,16 +9,18 @@ import course from "../../assets/icons/Course.png";
 import door from "../../assets/icons/Door.png";
 import { GraficoDeLinhas } from "../../componets/Grafic";
 import { GraficoDeBarras } from "../../componets/GraficBar";
+import { useAppContext } from "../../context/AppContext";
 // import { GraficoDePizza } from "../../componets/GraficPie";
 
 export const Dashboard = () => {
+  const {students} = useAppContext();
   return (
     <>
       <section className={style.container}>
         <div className={style.infoArea}>
           <CardDashboard
             text="Alunos"
-            number="100"
+            number={students.length}
             backColor="#0A51BD"
             icon={studentIcon}
             textSecudary=" matriculados"

@@ -68,8 +68,8 @@ export const Students = () => {
                     <tr key={student.id}>
                       <td>{student.matricula}</td>
                       <td>{student.nome}</td>
-                      <td>{student.Turma?.Curso?.nome}</td>
-                      <td>{student.Turma?.nome}</td>
+                      <td>{student.turma?.Curso?.nome}</td>
+                      <td>{student.turma?.nome}</td>
                       <td>{student.situacao}</td>
                       <td>
                         <button className={style.btnTable}>Editar</button>
@@ -77,138 +77,6 @@ export const Students = () => {
                       </td>
                     </tr>
                   ))}
-                  {/* <tr>
-                    <td>2023001</td>
-                    <td>João Silva</td>
-                    <td>Análise e Desenvolvimento de sistemas</td>
-                    <td>0Ad20-4° - N</td>
-                    <td>Matriculado</td>
-                    <td>
-                      <button className={style.btnTable}>Editar</button>
-                      <button className={style.btnTable}>Excluir</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2023002</td>
-                    <td>Maria Souza</td>
-                    <td>Análise e Desenvolvimento de sistemas</td>
-                    <td>0Ad20-4° - N</td>
-                    <td>Graduado</td>
-                    <td>
-                      <button className={style.btnTable}>Editar</button>
-                      <button className={style.btnTable}>Excluir</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2023003</td>
-                    <td>Wesley Santos</td>
-                    <td>Análise e Desenvolvimento de sistemas</td>
-                    <td>0Ad20-4° - N</td>
-                    <td>Reprovado</td>
-                    <td>
-                      <button className={style.btnTable}>Editar</button>
-                      <button className={style.btnTable}>Excluir</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2023004</td>
-                    <td>Ricardo Palmeira</td>
-                    <td>Análise e Desenvolvimento de sistemas</td>
-                    <td>0A130-2° - M</td>
-                    <td>Graduado</td>
-                    <td>
-                      <button className={style.btnTable}>Editar</button>
-                      <button className={style.btnTable}>Excluir</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2023001</td>
-                    <td>João Silva</td>
-                    <td>Análise e Desenvolvimento de sistemas</td>
-                    <td>0Ad20-4° - N</td>
-                    <td>Matriculado</td>
-                    <td>
-                      <button className={style.btnTable}>Editar</button>
-                      <button className={style.btnTable}>Excluir</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2023002</td>
-                    <td>Maria Souza</td>
-                    <td>Análise e Desenvolvimento de sistemas</td>
-                    <td>0Ad20-4° - N</td>
-                    <td>Graduado</td>
-                    <td>
-                      <button className={style.btnTable}>Editar</button>
-                      <button className={style.btnTable}>Excluir</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2023003</td>
-                    <td>Wesley Santos</td>
-                    <td>Análise e Desenvolvimento de sistemas</td>
-                    <td>0Ad20-4° - N</td>
-                    <td>Reprovado</td>
-                    <td>
-                      <button className={style.btnTable}>Editar</button>
-                      <button className={style.btnTable}>Excluir</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2023004</td>
-                    <td>Ricardo Palmeira</td>
-                    <td>Análise e Desenvolvimento de sistemas</td>
-                    <td>0A130-2° - M</td>
-                    <td>Graduado</td>
-                    <td>
-                      <button className={style.btnTable}>Editar</button>
-                      <button className={style.btnTable}>Excluir</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2023001</td>
-                    <td>João Silva</td>
-                    <td>Análise e Desenvolvimento de sistemas</td>
-                    <td>0Ad20-4° - N</td>
-                    <td>Matriculado</td>
-                    <td>
-                      <button className={style.btnTable}>Editar</button>
-                      <button className={style.btnTable}>Excluir</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2023002</td>
-                    <td>Maria Souza</td>
-                    <td>Análise e Desenvolvimento de sistemas</td>
-                    <td>0Ad20-4° - N</td>
-                    <td>Graduado</td>
-                    <td>
-                      <button className={style.btnTable}>Editar</button>
-                      <button className={style.btnTable}>Excluir</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2023003</td>
-                    <td>Wesley Santos</td>
-                    <td>Análise e Desenvolvimento de sistemas</td>
-                    <td>0Ad20-4° - N</td>
-                    <td>Reprovado</td>
-                    <td>
-                      <button className={style.btnTable}>Editar</button>
-                      <button className={style.btnTable}>Excluir</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2023004</td>
-                    <td>Ricardo Palmeira</td>
-                    <td>Análise e Desenvolvimento de sistemas</td>
-                    <td>0A130-2° - M</td>
-                    <td>Graduado</td>
-                    <td>
-                      <button className={style.btnTable}>Editar</button>
-                      <button className={style.btnTable}>Excluir</button>
-                    </td> */}
-                  {/* </tr> */}
                 </tbody>
               </table>
             </div>

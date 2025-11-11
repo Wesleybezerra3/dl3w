@@ -4,7 +4,7 @@ import { useContext, useEffect } from "react";
 import { useAppContext } from "../../context/AppContext";
 import api from "../../services/api";
 
-export const PrivateRoutes = () => {
+export const PrivateRoutesStudent = () => {
 
   if (!localStorage.getItem("token")) {
     return <Navigate to="/student/login" />;
@@ -20,8 +20,12 @@ export const PrivateRoutes = () => {
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          });
+          })
+          if (response.status !== 200) {
+            throw new Error("Erro ao autenticar usuário");
+          }
           const user = response.data;
+          console.log("Usuário autenticado:", user);
           setUser(user);
         }
       } catch (err) {
@@ -30,7 +34,7 @@ export const PrivateRoutes = () => {
         }
       }
     };
-    getUser();
+    getUser()
   }, []);
 
   return <Outlet />;

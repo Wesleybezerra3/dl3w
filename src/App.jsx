@@ -14,7 +14,8 @@ import { PasswordDefine } from "./pages/StudentPages/passwordDefine";
 import { PlataformLayout } from "./pages/StudentPages/PlataformLayaout";
 import { HomeStudent } from "./pages/StudentPages/Home";
 import { MyCourse } from "./pages/StudentPages/MyCourse";
-import { PrivateRoutes } from "./pages/PrivateRoutes";
+import { PrivateRoutesStudent } from "./pages/PrivateRoutesStudent";
+import { PrivateRoutesAdmin } from "./pages/PrivateRoutesAdmin";
 
 function App() {
   return (
@@ -31,11 +32,11 @@ function App() {
             <Route path="student">
               <Route path="acess" element={<FirstAcess />} />
               <Route path="login" element={<LoginStudent />} />
-              <Route path="passworddefine" element={<PasswordDefine />} />
+              <Route path="definir-senha" element={<PasswordDefine />} />
             </Route>
           </Route>
 
-          <Route element={<PrivateRoutes />}>
+          <Route element={<PrivateRoutesAdmin />}>
             <Route path="adm">
               <Route path="dashboard" element={<DashboardLayout />}>
                 <Route index element={<Dashboard />} />
@@ -47,6 +48,9 @@ function App() {
                 <Route path="turmas" element={<PageClass />} />
               </Route>
             </Route>
+          </Route>
+
+          <Route element={<PrivateRoutesStudent />}>
             <Route path="student">
               <Route path="plataform" element={<PlataformLayout />}>
                 <Route index element={<HomeStudent />} />

@@ -1,12 +1,16 @@
 import style from "./style.module.css";
 import logo from "../../../assets/logo.png";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAppContext } from "../../../context/AppContext";
 import api from "../../../services/api";
+import CardNotification from "../../../componets/Cards/CardNotification";
 
 export const LoginStudent = () => {
   // const {role} = useAppContext();
+
+  const [textNotification, setTextNotification] = useState("");
+  const [resetKey, setResetKey] = useState(0);
   const navigate = useNavigate();
   const [loginData, setLoginData] = useState({
     matricula: "",
@@ -20,6 +24,12 @@ export const LoginStudent = () => {
 
   const saveToken = (token) => {
     const expiration = Date.now() + 60 * 60 * 1000; // 1 hora (em ms)
+
+    if (localStorage.getItem("token")) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("token_expiration");
+    }
+
     localStorage.setItem("token", token);
     localStorage.setItem("token_expiration", expiration.toString());
   };
@@ -30,13 +40,7 @@ export const LoginStudent = () => {
       alert("Por favor, preencha todos os campos");
       return;
     }
-
-    login(loginData).then(() => {
-      setTimeout(() => {
-        navigate("/student/plataform");
-      }, 1000);
-    });
-    navigate("/student/plataform");
+    await login(loginData);
   };
 
   const login = async (data) => {
@@ -49,11 +53,15 @@ export const LoginStudent = () => {
       if (response.status !== 200) {
         throw new Error("Erro ao logar usuario");
       }
-      if(localStorage.getItem("token")){
-        localStorage.removeItem("token");
-      }
       saveToken(token);
+
+      setTextNotification("Login realizado com sucesso!");
+      setResetKey((prev) => prev + 1);
       console.log("Usuario logado com sucesso", response.data);
+
+      setTimeout(() => {
+        navigate("/student/plataform");
+      }, 2000);
     } catch (err) {
       console.log("Erro ao logar usuario", err);
       return null;
@@ -63,6 +71,7 @@ export const LoginStudent = () => {
   return (
     <>
       <main>
+        <CardNotification text={textNotification} resetKey={resetKey} />
         <form className={style.login} onSubmit={handleLogin}>
           <div className={style.headerLogin}>
             <h1>Entre com sua conta</h1>
@@ -96,6 +105,14 @@ export const LoginStudent = () => {
             <button type="submit" className={style.btnLogin}>
               Entrar
             </button>
+            <div>
+              <Link
+                to="/student/definir-senha"
+                className={style.definePassword}
+              >
+                Definir minha senha
+              </Link>
+            </div>
           </div>
         </form>
       </main>

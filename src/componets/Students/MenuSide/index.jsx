@@ -1,15 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./style.module.css";
 import { BookCopyIcon, Home, LogOut, PieChart, X } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
+import { useAppContext } from "../../../context/AppContext";
 
 export const MenuSide = ({ visible, onClose }) => {
   const navigate = useNavigate();
+  const {user} = useAppContext();
+  const [name, setName] = useState('');
+
+  const formattedName = (name) => {
+    if (!name) return '';
+    const names = name.split(' ');
+    if (names.length === 1) return names[0];
+    setName(`${names[0]} ${names[names.length - 1]}`);
+  }
+
 
   const logout = () => {
     navigate("/");
   }
   useEffect(() => {
+    formattedName(user?.nome);
     // fechar com ESC
     const onKey = (e) => {
       if (e.key === "Escape") onClose && onClose();
@@ -30,7 +42,7 @@ export const MenuSide = ({ visible, onClose }) => {
           <div className={style.profilePhoto}></div>
           <div className={style.infoUser}>
             <div>
-              <p>Wesley Bezerra</p>
+              <p>{name}</p>
               <span>Aluno</span>
             </div>
             {/* <div className={style.editProfile}>

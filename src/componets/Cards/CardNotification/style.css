@@ -1,0 +1,62 @@
+.containerNotification {
+  display: none; 
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  background-color: var(--primary-color);
+  /* display: flex; */
+  justify-content: center;
+  padding:  0px;
+  width: 100%;
+  height: 40px;
+}
+.containerNotification p {
+  margin: auto;
+  color: var(--white-color);
+  font-size: 1.2em;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+.containerNotification::after {
+  content: "";
+  background-color: var(--gray-color);
+  width: 100%;
+  height: 5px;
+  position: absolute;
+  bottom: -5px; 
+  left: 0;
+  animation: contador 5s ease-in;
+  animation-delay: 1s;
+  outline: none;
+}
+@keyframes contador {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.showNotification {
+  display: flex;
+  bottom: 20px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .containerNotification {
+    font-size: 0.8em;
+  }
+}

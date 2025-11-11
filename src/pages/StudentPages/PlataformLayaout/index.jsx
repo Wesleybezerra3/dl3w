@@ -46,11 +46,11 @@ export const PlataformLayout = () => {
       <MenuSide visible={isOpen} onClose={() => setIsOpen(!isOpen)} />
       <main>
         <section className={style.containerWelcome}>
-          <h1>Olá! {user.nome}👋</h1>
+          <h1>Olá! {user?.nome ?? ''}👋</h1>
         </section>
         <section>
           <div className={style.courseName}>
-            <h2>{user.turma?.Curso?.nome}</h2>
+            <h2>{user?.turma?.Curso?.nome ?? ''}</h2>
           </div>
           <div className={style.carroselPeriods}>
             <button

@@ -62,10 +62,21 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: right;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 10px;
+    gap: 10px;
+}
+.definePassword{
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    text-decoration: underline;
+    font-weight: 600;
+    text-align: left;
     margin-top: 10px;
 }
 .btnLogin{
+    width: 100%;
     padding: 10px 20px;
     background-color: var(--primary-color);
     color: white;

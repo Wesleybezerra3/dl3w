@@ -21,7 +21,7 @@ export const SelectRole = () => {
             return;
         }
         if (selectValue === "Aluno") {
-            navigate('/student/acess')
+            navigate('/student/login')
             console.log(selectValue)
             return;
         }

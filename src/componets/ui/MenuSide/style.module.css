@@ -1,31 +1,79 @@
-.menuSide{
-    /* grid-column: 1/2; */
+/* ...existing code... */
+
+.infoUser {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* flex-direction: column; */
+}
+
+.infoUser>div {
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+}
+
+.infoUser p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.infoUser span {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.editProfile {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+}
+
+.menuSide {
+    min-height: 100dvh;
+    /* usa viewport dinâmico em dispositivos móveis */
+    height: auto;
     width: 100px;
-    height: 100vh;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
-    gap: 20px;
+    gap: clamp(8px, 2.5vh, 24px);
+    /* espaçamento responsivo */
     border: 1px solid var(--border-color);
     background-color: var(--secudary-color);
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    padding: 20px 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: clamp(10px, 2vh, 24px) 10px;
+    box-sizing: border-box;
     cursor: pointer;
-    transition: width 0.4s ease, padding 0.4s ease, background-color 0.3s ease;
+    transition: width 0.4s ease, padding 0.4s ease, background-color 0.3s ease, align-items 0.3s ease;
 }
-.menuSide:hover{
-    width: 350px;
+
+
+/* ao expandir, permite largura maior mas limitada para telas pequenas */
+
+.menuSide:hover {
+    width: min(350px, 82%);
+    align-items: flex-start;
+    padding-left: clamp(12px, 4vw, 22px);
 }
 
 .menuSide span,
 .infoUser {
-    transition: opacity 0.4s ease, transform 0.3s ease;
+    transition: opacity 0.28s ease, transform 0.28s ease;
+    white-space: nowrap;
 }
 
-
 .menuSide:hover span {
-    display: block;
+    display: inline-block;
     opacity: 1;
     transform: translateX(0);
 }
@@ -39,7 +87,8 @@
 .menuSide:hover .headerMenu,
 .menuSide:hover .links,
 .menuSide:hover .btnLogout {
-    justify-content: left;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .menuSide:hover .infoUser {
@@ -52,6 +101,7 @@
     display: none;
     opacity: 0;
     transform: translateY(-10px);
+    gap: 1em;
 }
 
 .menuSide:hover .profilePhoto {
@@ -59,108 +109,147 @@
 }
 
 
-.headerMenu{
-    width: 100%;
-    height: 60px;
-    display: flex;
-    align-items: center;
-     justify-content: center; 
+/* Header */
 
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 10px;
-}
-.infoUser{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1em;
-}
-.infoUser p{
-    font-family: 'Roboto', sans-serif;
-    font-size: 1em;
-    font-weight: 500;
-    color: var(--text-color);
-}
-.infoUser span{
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.9em;
-    font-weight: 500;
-    color: var(--text-color);
-}
-.editProfile{
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
+.headerMenu {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-color);
+    gap: 12px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    box-sizing: border-box;
 }
-.profilePhoto{
-    /* margin-right: 10px; */
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: var(--gray-color);
-    padding: 10px;
-}
-.menu{
+
+
+/* Garantir que o menu central cresça e que o conteúdo seja rolável se necessário */
+
+.menu {
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-between;
-    gap: 10px;
+    gap: clamp(8px, 2vh, 20px);
+    flex: 1 1 auto;
+    /* ocupa o espaço disponível */
     overflow-y: auto;
-
+    -webkit-overflow-scrolling: touch;
+    padding-right: 6px;
+    /* evitar que o conteúdo fique atrás da scrollbar */
+    box-sizing: border-box;
 }
-.menu h2{
+
+
+/* Títulos e listas */
+
+.menu h2 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 1em;
     color: var(--text-color);
 }
-.menu ul{
+
+.menu ul {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: clamp(10px, 1.5vh, 18px);
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
-.optionsMenu{
+
+.menu {
+    -ms-overflow-style: none;
+    /* IE/Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+
+/* WebKit (Chrome, Safari) */
+
+.menu::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.menu::-webkit-scrollbar-track,
+.menu::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+
+/* Opções do menu */
+
+.optionsMenu {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: clamp(16px, 3vh, 40px);
 }
-.links{
+
+.links {
     width: 100%;
     display: flex;
     justify-content: center;
+    /* centraliza ícone quando colapsado */
+    align-items: center;
     padding: 10px;
     gap: 10px;
     border-radius: 5px;
     cursor: pointer;
-    transition: all 0.5s ease;
+    transition: all 0.25s ease;
     text-decoration: none;
     color: var(--text-color);
-    /* border: 1px solid var(--border-color); */
     font-family: 'Roboto', sans-serif;
     font-size: 0.9em;
     font-weight: 500;
+    box-sizing: border-box;
 }
-.links:hover{
+
+.links:hover {
     background-color: var(--primary-color);
     color: var(--white-color);
-    /* border: 1px solid var(--primary-color); */
 }
-.logout{
+
+
+/* Força ícones a terem tamanho constante e não encolherem */
+
+.icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+
+/* Foto de perfil */
+
+.profilePhoto {
+    width: 50px;
+    height: 50px;
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 50%;
+    background-color: var(--gray-color);
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+
+/* Footer / logout */
+
+.logout {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 6px;
+    box-sizing: border-box;
 }
-.logout button{
+
+.logout button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -170,14 +259,21 @@
     border: none;
     border-radius: 5px;
     color: var(--text-color);
-    /* border: 1px solid var(--border-color); */
     font-family: 'Roboto', sans-serif;
     font-size: 0.9em;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.5s ease;
+    transition: all 0.25s ease;
+    box-sizing: border-box;
 }
-.logout button:hover{
+
+.logout button:hover {
     background-color: var(--primary-color);
     color: var(--white-color);
 }
+
+
+/* ...existing code... */
+
+
+/* ...existing code... */

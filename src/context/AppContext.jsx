@@ -42,6 +42,8 @@ export const ContextProvider = ({ children }) => {
       try {
         const response = await api.get("/alunos");
         setStudents(response.data);
+        console.log('Alunos',response.data)
+
       } catch (err) {
         console.log(err);
       }
@@ -54,6 +56,7 @@ export const ContextProvider = ({ children }) => {
       try {
         const response = await api.get("/professores");
         setTeachers(response.data);
+        console.log('Professores',response.data)
       } catch (err) {
         console.log(err);
       }
@@ -110,6 +113,7 @@ export const ContextProvider = ({ children }) => {
         setClasses,
         user,
         setUser,
+        setTeachers,
         teachers,
         rooms,
         setRooms,

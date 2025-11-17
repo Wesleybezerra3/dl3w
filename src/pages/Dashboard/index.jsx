@@ -21,7 +21,7 @@ export const Dashboard = () => {
           <CardDashboard
             text="Alunos"
             route={'alunos'}
-            number={students.length}
+            number={students?.totalStudents}
             backColor="#0A51BD"
             icon={studentIcon}
             textSecudary=" matriculados"
@@ -29,7 +29,7 @@ export const Dashboard = () => {
           <CardDashboard
             text="Professores"
             route={'professores'}
-            number={teachers.length}
+            number={teachers?.totalTeachers}
             backColor="#038B20"
             icon={teacherIcon}
             textSecudary=" ativos"
@@ -59,7 +59,7 @@ export const Dashboard = () => {
           <CardDashboard
             text="Salas"
             route={'salas'}
-            number={rooms.length}
+            number={rooms?.total_rooms}
             backColor="#839426ff"
             icon={door}
             textSecudary=" cadastradas"

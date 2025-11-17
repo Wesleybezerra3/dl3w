@@ -7,11 +7,15 @@ import { FilterIcon, Search } from "lucide-react";
 import api from "../../services/api";
 import { useAppContext } from "../../context/AppContext";
 import { NewTeacher } from "../../componets/Modals/NewTeacher";
+import { PaginatorTeacher } from "../../componets/Paginations/PaginatorTeacher";
 
 
 export const Teachers = () => {
   const [isOpen, setIsOpen] = useState(false);
   const {teachers = []} = useAppContext();
+
+  const pages = Math.ceil(teachers?.totalTeachers / 10);
+
 
   useEffect(() => {
     console.log(teachers);
@@ -64,7 +68,7 @@ export const Teachers = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {teachers.map((teacher) => (
+                  {teachers?.professores?.map((teacher) => (
                     <tr key={teacher.id}>
                       <td>{teacher.matricula}</td>
                       <td>{teacher.nome}</td>
@@ -81,6 +85,10 @@ export const Teachers = () => {
                 </tbody>
               </table>
             </div>
+             <div className={style.containerPaginator}>
+                          {Array.from({ length: Math.max(0, pages) }).map((_, i) => (              <PaginatorTeacher key={i} page={i + 1} />
+                                     ))}
+                        </div>
           </section>
         </div>
       </section>

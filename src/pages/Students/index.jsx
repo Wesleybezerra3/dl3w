@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./style.module.css";
 import { FiltersFast } from "../../componets/FiltersFast";
 import { Addbtn } from "../../componets/ui/Addbtn";
@@ -7,14 +7,20 @@ import { NewStudent } from "../../componets/Modals/NewStudent";
 import { FilterIcon, Search } from "lucide-react";
 import api from "../../services/api";
 import { useAppContext } from "../../context/AppContext";
+import { PaginatorStudents } from "../../componets/Paginations/PaginatorStudents";
 
 export const Students = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { students, setStudents, classes } = useAppContext();
+    const [resultSearch, setResultSearch] = useState([]);
+  
+  const pages = Math.ceil(students?.totalStudents / 10);
+
 
   useEffect(() => {
     console.log(students);
   }, [students]);
+
 
   return (
     <>
@@ -66,7 +72,7 @@ export const Students = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {students.map((student) => (
+                  {students?.students?.map((student) => (
                     <tr key={student.id}>
                       <td>{student.matricula}</td>
                       <td>{student.nome}</td>
@@ -89,6 +95,10 @@ export const Students = () => {
                   ))}
                 </tbody>
               </table>
+            </div>
+            <div className={style.containerPaginator}>
+              {Array.from({ length: Math.max(0, pages) }).map((_, i) => (              <PaginatorStudents key={i} page={i + 1} />
+                         ))}
             </div>
           </section>
         </div>

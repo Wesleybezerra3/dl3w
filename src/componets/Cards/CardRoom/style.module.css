@@ -1,28 +1,29 @@
 .cardRoom {
-    width: 300px;
+    width: 100%;
     /* height: 200px; */
     background-color: var(--secudary-color);
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--border-color);
     padding: 16px;
-       font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;
     /* margin: 12px 0; */
 }
 
-.infoRoom p:nth-child(1){
+.infoRoom p:nth-child(1) {
     font-size: 1.2em;
     font-weight: 600;
     color: var(--text-color);
     margin-bottom: 8px;
 }
-.infoRoom span{
+
+.infoRoom span {
     font-size: 1em;
     font-weight: 600;
     color: var(--text-color);
-
 }
-.infoRoom p{
+
+.infoRoom p {
     font-size: 1em;
     font-weight: 400;
     color: var(--text-color);
@@ -33,6 +34,7 @@
     flex-direction: column;
     gap: 4px;
 }
+
 .actions {
     margin-top: 15px;
     display: flex;
@@ -40,7 +42,8 @@
     justify-content: space-between;
     gap: 10px;
 }
-.btn{
+
+.btn {
     width: 100%;
     height: 35px;
     background-color: var(--primary-color);
@@ -56,6 +59,7 @@
     border-radius: 5px;
     gap: 10px;
 }
-.icon{
+
+.icon {
     width: 15px;
 }

@@ -140,7 +140,7 @@ export const NewStudent = ({ visible, onClose }) => {
               autoComplete="off"
             />
           </div>
-          <div className={style.inputGroup}>
+          {/* <div className={style.inputGroup}>
             <label htmlFor="curso">Curso</label>
             <select name="curso" value={form.curso} onChange={handleChange}>
               <option value="" selected disabled>
@@ -152,7 +152,7 @@ export const NewStudent = ({ visible, onClose }) => {
                 </option>
               ))}
             </select>
-          </div>
+          </div> */}
           <div className={style.inputGroup}>
             <label htmlFor="turma">Turmas</label>
             <select name="turma" value={form.turma} onChange={handleChange}>

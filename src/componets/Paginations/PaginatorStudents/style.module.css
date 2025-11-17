@@ -1,0 +1,154 @@
+/* ...existing code... */
+
+.containerBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4px;
+    box-sizing: border-box;
+}
+
+.btnPage {
+    min-width: 36px;
+    height: 36px;
+    padding: 0 10px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background: var(--secudary-color, #f5f5f7);
+    color: var(--text-color, #222);
+    font-family: "Roboto", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.12s ease, background-color 0.12s ease, box-shadow 0.12s ease;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
+
+
+/* hover / focus */
+
+.btnPage:hover {
+    transform: translateY(-2px);
+    background: var(--primary-color, #2b6ef6);
+    color: var(--white-color, #fff);
+    box-shadow: 0 6px 18px rgba(43, 110, 246, 0.12);
+}
+
+.btnPage:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(43, 110, 246, 0.12);
+}
+
+
+/* estado ativo (adicionar className="active" ou aria-current="true" no componente) */
+
+.btnPage.active,
+.btnPage[aria-current="true"] {
+    background: var(--primary-color, #2b6ef6);
+    color: var(--white-color, #fff);
+    border-color: rgba(0, 0, 0, 0.06);
+    transform: none;
+}
+
+
+/* estado desabilitado */
+
+.btnPage:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+/* responsividade: botões menores em telas pequenas */
+
+@media (max-width: 480px) {
+    .btnPage {
+        min-width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+        padding: 0 8px;
+        border-radius: 6px;
+    }
+}
+
+.containerBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4px;
+    box-sizing: border-box;
+}
+
+.btnPage {
+    min-width: 36px;
+    height: 36px;
+    padding: 0 10px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background: var(--secudary-color, #f5f5f7);
+    color: var(--text-color, #222);
+    font-family: "Roboto", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.12s ease, background-color 0.12s ease, box-shadow 0.12s ease;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
+
+
+/* hover / focus */
+
+.btnPage:hover {
+    transform: translateY(-2px);
+    background: var(--primary-color, #2b6ef6);
+    color: var(--white-color, #fff);
+    box-shadow: 0 6px 18px rgba(43, 110, 246, 0.12);
+}
+
+.btnPage:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(43, 110, 246, 0.12);
+}
+
+
+/* estado ativo (adicionar className="active" ou aria-current="true" no componente) */
+
+.btnPage.active,
+.btnPage[aria-current="true"] {
+    background: var(--primary-color, #2b6ef6);
+    color: var(--white-color, #fff);
+    border-color: rgba(0, 0, 0, 0.06);
+    transform: none;
+}
+
+
+/* estado desabilitado */
+
+.btnPage:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+/* responsividade: botões menores em telas pequenas */
+
+@media (max-width: 480px) {
+    .btnPage {
+        min-width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+        padding: 0 8px;
+        border-radius: 6px;
+    }
+}
+
+
+/* ...existing code... */

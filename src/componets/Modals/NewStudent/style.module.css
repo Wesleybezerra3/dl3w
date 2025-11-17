@@ -17,8 +17,8 @@
     width: 420px;
     background: #fff;
     border-radius: 8px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-    padding: 32px 28px 24px 28px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+    padding: 10px 28px 10px 28px;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -28,8 +28,14 @@
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px);}
-    to { opacity: 1; transform: translateY(0);}
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .titleModal {
@@ -38,7 +44,7 @@
 }
 
 .titleModal h2 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 600;
     margin: 0;
 }
@@ -116,7 +122,6 @@
     cursor: pointer;
     transition: background 0.2s;
     font-weight: 600;
-
 }
 
 .saveBtn:hover {

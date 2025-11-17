@@ -50,7 +50,7 @@ export const PlataformLayout = () => {
         </section>
         <section>
           <div className={style.courseName}>
-            <h2>{user?.turma?.Curso?.nome ?? ''}</h2>
+            <h2>{user?.turma?.curso?.nome ?? ''}</h2>
           </div>
           <div className={style.carroselPeriods}>
             <button

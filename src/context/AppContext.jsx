@@ -13,7 +13,10 @@ export const AppContext = createContext();
 // Provedor do contexto
 export const ContextProvider = ({ children }) => {
   const [students, setStudents] = useState([]);
+  const [teachers, setTeachers] = useState([]);
   const [classes, setClasses] = useState([]);
+  const [rooms, setRooms] = useState([]);
+  const [courses, setCurses] = useState([]);
   const [user, setUser] = useState(null);
 
   // const [role, setRole] = useState(() => {
@@ -47,9 +50,22 @@ export const ContextProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
+    const getAllTeachers = async () => {
+      try {
+        const response = await api.get("/professores");
+        setTeachers(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getAllTeachers();
+  }, []);
+
+  useEffect(() => {
     const getClasses = async () => {
       try {
         const response = await api.get("/turmas");
+        console.log("Turmas", response.data);
         setClasses(response.data);
       } catch (err) {
         console.log(err);
@@ -57,6 +73,33 @@ export const ContextProvider = ({ children }) => {
     };
     getClasses();
   }, []);
+
+  useEffect(() => {
+    const getRooms = async () => {
+      try {
+        const response = await api.get("/salas");
+        console.log("Salas", response.data);
+        setRooms(response.data)
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    getRooms();
+  },[]);
+
+  useEffect(()=>{
+    const getCourses = async()=>{
+      try{
+        const response = await api.get('/cursos');
+        console.log('Curso', response.data)
+        setCurses(response.data)
+      }catch(err){
+        console.log(err)
+      }
+    }
+    getCourses()
+  },[])
 
   return (
     <AppContext.Provider
@@ -67,6 +110,10 @@ export const ContextProvider = ({ children }) => {
         setClasses,
         user,
         setUser,
+        teachers,
+        rooms,
+        setRooms,
+        courses
       }}
     >
       {children}

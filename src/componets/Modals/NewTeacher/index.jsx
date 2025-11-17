@@ -3,47 +3,28 @@ import style from "./style.module.css";
 import api from "../../../services/api";
 import { useAppContext } from "../../../context/AppContext";
 
-export const NewStudent = ({ visible, onClose }) => {
+export const NewTeacher = ({ visible, onClose }) => {
   const { classes } = useAppContext();
-  const cursos = [
-    "ADS",
-    "Direito",
-    "Engenharia Civil",
-    "Administração",
-    "Pedagogia",
-    "Enfermagem",
-    "Psicologia",
-    "Arquitetura",
-    "Biomedicina",
-    "Educação Física",
-    "Nutrição",
-  ];
-  const turmas = [
-    1,
-    "0Ad20-4° - T",
-    "0Ad21-3° - N",
-    "0Ad21-3° - T",
-    "0Ad22-2° - N",
-  ];
  
-
   const [form, setForm] = useState({
     nome: "",
     cpf: "",
-    curso: "",
-    turma: "",
+    email: "",
+    data_nascimento: "",
+    titulacao:''
+
   });
 
-  const NewStudent = async ()=>{
+  const NewTeacher = async ()=>{
     console.log(form);
     try{
-      const response = await api.post('/alunos', form)
+      const response = await api.post('/professores', form)
       if(response.status !== 201){
         alert("Erro ao criar novo aluno");
-        throw new Error("Erro ao matricular novo aluno");
+        throw new Error("Erro ao matricular novo professor");
       }
       if(response.status === 201){
-        alert("Aluno matriculado com sucesso!");
+        alert("Professor matriculado com sucesso!");
       }
       console.log(response.data);
     }catch(err){
@@ -59,10 +40,11 @@ export const NewStudent = ({ visible, onClose }) => {
     e.preventDefault();
     // Aqui você pode adicionar a lógica de envio do formulário
     if (Object.values(form).some((field) => !field)) {
-      alert("Por favor, preencha todos os campos");
+      alert("Preencha todos os campos");
       return;
     }
-    NewStudent();
+
+    NewTeacher();
     setForm({
       nome: "",
       cpf: "",
@@ -82,7 +64,7 @@ export const NewStudent = ({ visible, onClose }) => {
     >
       <div className={style.modalContainer}>
         <div className={style.titleModal}>
-          <h2>Novo Aluno</h2>
+          <h2>Novo Profesor</h2>
         </div>
         <form className={style.formModal} onSubmit={handleSubmit}>
           {/* <div className={style.inputGroup}>
@@ -130,7 +112,7 @@ export const NewStudent = ({ visible, onClose }) => {
             />
           </div>
           <div className={style.inputGroup}>
-            <label htmlFor="data">Data de nascimenteo</label>
+            <label htmlFor="data">Data de nascimento</label>
             <input
               name="data_nascimento"
               type="text"
@@ -140,32 +122,19 @@ export const NewStudent = ({ visible, onClose }) => {
               autoComplete="off"
             />
           </div>
-          <div className={style.inputGroup}>
-            <label htmlFor="curso">Curso</label>
-            <select name="curso" value={form.curso} onChange={handleChange}>
-              <option value="" selected disabled>
-                Selecione
-              </option>
-              {cursos.map((curso, index) => (
-                <option key={index} value={curso}>
-                  {curso}
-                </option>
-              ))}
-            </select>
+           <div className={style.inputGroup}>
+            <label htmlFor="data">Titulação</label>
+            <input
+              name="titulacao"
+              type="text"
+              placeholder="Digite a titulação do professor"
+              value={form.titulacao}
+              onChange={handleChange}
+              autoComplete="off"
+            />
           </div>
-          <div className={style.inputGroup}>
-            <label htmlFor="turma">Turmas</label>
-            <select name="turma" value={form.turma} onChange={handleChange}>
-              <option value="" selected disabled>
-                Selecione
-              </option>
-              {classes.map((classe, index) => (
-                <option key={index} value={classe.id}>
-                  {classe.nome}
-                </option>
-              ))}
-            </select>
-          </div>
+          
+        
           <div className={style.footerModal}>
             <button type="button" className={style.cancelBtn} onClick={onClose}>
               Cancelar

@@ -3,23 +3,24 @@ import style from "./style.module.css";
 import { FiltersFast } from "../../componets/FiltersFast";
 import { Addbtn } from "../../componets/ui/Addbtn";
 import { GraficPie } from "../../componets/GraficPie";
-import { NewStudent } from "../../componets/Modals/NewStudent";
 import { FilterIcon, Search } from "lucide-react";
 import api from "../../services/api";
 import { useAppContext } from "../../context/AppContext";
+import { NewTeacher } from "../../componets/Modals/NewTeacher";
 
-export const Students = () => {
+
+export const Teachers = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { students, setStudents, classes } = useAppContext();
+  const {teachers = []} = useAppContext();
 
   useEffect(() => {
-    console.log(students);
-  }, [students]);
-
+    console.log(teachers);
+  }, [teachers]);
+  
   return (
     <>
       <section className="container">
-        <NewStudent visible={isOpen} onClose={() => setIsOpen(false)} />
+        <NewTeacher visible={isOpen} onClose={() => setIsOpen(false)} />
 
         <div className={style.layout}>
           <section className={style.containerFilters}>
@@ -28,29 +29,25 @@ export const Students = () => {
           </section>
           <section className={style.containerTable}>
             <div className={style.headerTable}>
-              <p>Alunos</p>
+              <p>Professores</p>
               <div className={style.searchClass}>
-                <button className={style.btnFilter}>
-                  <FilterIcon size={16} />
-                </button>
-                <input
-                  type="text"
-                  placeholder="Pesquisar Turma"
-                  autoComplete="off"
-                />
-                <div>
-                  <button className={style.btnSearch}>
-                    <Search size={16} />
-                  </button>
+                        <button className={style.btnFilter}>
+                            <FilterIcon size={16}/>
+                        </button>
+                    <input type="text" placeholder='Pesquisar Turma' autoComplete='off'/>
+                    <div>
+                        <button className={style.btnSearch}>
+                            <Search size={16}/>
+                        </button>
+                    </div>
                 </div>
-              </div>
               <button
                 className={style.addBtn}
                 onClick={() => {
                   setIsOpen(true);
                 }}
               >
-                Novo Aluno
+                Novo Professor
               </button>
             </div>
             <div className={style.contentTable}>
@@ -59,28 +56,22 @@ export const Students = () => {
                   <tr>
                     <th>Matrícula</th>
                     <th>Nome</th>
-                    <th>Curso</th>
-                    <th>Turma</th>
+                    {/* <th>Curso</th> */}
+                    {/* <th>Turma</th> */}
+                    <th>Titulação</th>
                     <th>Situação</th>
                     <th>Ações</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {students.map((student) => (
-                    <tr key={student.id}>
-                      <td>{student.matricula}</td>
-                      <td>{student.nome}</td>
-                      <td>{student.turma?.Curso?.nome}</td>
-                      <td>{student.turma?.nome}</td>
-                      <td
-                        style={
-                          student.situacao === "ativo"
-                            ? { color: "green" }
-                            : { color: "red" }
-                        }
-                      >
-                        {student.situacao}
-                      </td>
+                  {teachers.map((teacher) => (
+                    <tr key={teacher.id}>
+                      <td>{teacher.matricula}</td>
+                      <td>{teacher.nome}</td>
+                      {/* <td>{teacher.turma?.Curso?.nome}</td> */}
+                      {/* <td>{teacher.turma?.nome}</td> */}
+                      <td>{teacher.titulacao}</td>  
+                      <td style={teacher.situacao === 'ativo' ? {color: 'green'} : {color: 'red'}}>{teacher.situacao}</td>
                       <td>
                         <button className={style.btnTable}>Editar</button>
                         <button className={style.btnTable}>Excluir</button>

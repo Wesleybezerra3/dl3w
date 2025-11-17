@@ -16,6 +16,8 @@ import { HomeStudent } from "./pages/StudentPages/Home";
 import { MyCourse } from "./pages/StudentPages/MyCourse";
 import { PrivateRoutesStudent } from "./pages/PrivateRoutesStudent";
 import { PrivateRoutesAdmin } from "./pages/PrivateRoutesAdmin";
+import { Teachers } from "./pages/Teachers";
+import { Rooms } from "./pages/Rooms";
 
 function App() {
   return (
@@ -45,7 +47,9 @@ function App() {
                   element={<SubjectSchedules />}
                 />
                 <Route path="alunos" element={<Students />} />
+                <Route path="professores" element={<Teachers />} />
                 <Route path="turmas" element={<PageClass />} />
+                <Route path="salas" element={<Rooms />} />
               </Route>
             </Route>
           </Route>

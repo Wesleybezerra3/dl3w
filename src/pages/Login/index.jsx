@@ -66,11 +66,7 @@ export const Login = () => {
       return;
     }
 
-    login(loginData).then(() => {
-      setTimeout(() => {
-        navigate("/adm/dashboard");
-      }, 1000);
-    });
+    login(loginData)
   };
 
   // useEffect(()=>{

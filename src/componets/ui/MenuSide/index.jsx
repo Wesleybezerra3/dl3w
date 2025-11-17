@@ -64,7 +64,7 @@ export const MenuSide = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="" className={style.links}>
+                  <Link to="/adm/dashboard/salas" className={style.links}>
                     {" "}
                     <DoorOpen className={style.icon} />
                     <span>Salas</span>

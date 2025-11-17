@@ -13,13 +13,14 @@ import { useAppContext } from "../../context/AppContext";
 // import { GraficoDePizza } from "../../componets/GraficPie";
 
 export const Dashboard = () => {
-  const {students} = useAppContext();
+  const {students, classes,teachers, rooms,courses} = useAppContext();
   return (
     <>
       <section className={style.container}>
         <div className={style.infoArea}>
           <CardDashboard
             text="Alunos"
+            route={'alunos'}
             number={students.length}
             backColor="#0A51BD"
             icon={studentIcon}
@@ -27,7 +28,8 @@ export const Dashboard = () => {
           />
           <CardDashboard
             text="Professores"
-            number="10"
+            route={'professores'}
+            number={teachers.length}
             backColor="#038B20"
             icon={teacherIcon}
             textSecudary=" ativos"
@@ -40,14 +42,24 @@ export const Dashboard = () => {
           /> */}
           <CardDashboard
             text="Cursos"
-            number="10"
+            route={'cursos'}
+            number={courses.length}
             backColor="#FF6C02"
             icon={course}
             textSecudary=" disponíveis"
           />
           <CardDashboard
+            text="Turmas"
+            route={'turmas'}
+            number={classes.length}
+            backColor="#25afafff"
+            icon={door}
+            textSecudary=" cadastradas"
+          />
+          <CardDashboard
             text="Salas"
-            number="15"
+            route={'salas'}
+            number={rooms.length}
             backColor="#839426ff"
             icon={door}
             textSecudary=" cadastradas"
@@ -61,10 +73,10 @@ export const Dashboard = () => {
               <GraficoDeBarras />
             </div>
 
-            <div>
+            {/* <div>
               <h1>Matrículas de alunos por mês</h1> 
               <GraficoDeLinhas />
-            </div>
+            </div> */}
           </div>
 
           {/* <div className={style.recentActivities}>

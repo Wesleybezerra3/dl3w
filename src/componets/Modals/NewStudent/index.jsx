@@ -30,7 +30,6 @@ export const NewStudent = ({ visible, onClose }) => {
   const [form, setForm] = useState({
     nome: "",
     cpf: "",
-    curso: "",
     turma: "",
   });
 
@@ -68,7 +67,6 @@ export const NewStudent = ({ visible, onClose }) => {
       cpf: "",
       email: "",
       data_nascimento: "",
-      curso: "",
       turma: "",
     });
 

@@ -27,13 +27,13 @@ export const CardRoom = ({nameRoom, location, capacidade, status, qtdturma}) => 
         <div className={style.actions}>
           <button className={style.btn}>
             <Eye className={style.icon} />
-            Ver</button>
+            </button>
           <button className={style.btn}>
             <Edit2 className={style.icon} />
-            Editar</button>
+            </button>
           <button className={style.btn}>
             <Trash className={style.icon} />
-            Excluir</button>
+            </button>
         </div>
       </article>
     </>

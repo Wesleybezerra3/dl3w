@@ -4,27 +4,28 @@ import { FiltersFast } from "../../componets/FiltersFast";
 import { Addbtn } from "../../componets/ui/Addbtn";
 import { GraficPie } from "../../componets/GraficPie";
 import { NewStudent } from "../../componets/Modals/NewStudent";
-import { FilterIcon, Search } from "lucide-react";
+import { Eye, FilterIcon, Search, SwitchCamera, Trash } from "lucide-react";
 import api from "../../services/api";
 import { useAppContext } from "../../context/AppContext";
 import { PaginatorStudents } from "../../componets/Paginations/PaginatorStudents";
+import { CardNotifications} from "../../componets/Cards/CardNotifications";
 
 export const Students = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { students, setStudents, classes } = useAppContext();
-    const [resultSearch, setResultSearch] = useState([]);
-  
-  const pages = Math.ceil(students?.totalStudents / 10);
+  const [resultSearch, setResultSearch] = useState([]);
 
+  const pages = Math.ceil(students?.totalStudents / 10);
 
   useEffect(() => {
     console.log(students);
   }, [students]);
 
-
   return (
     <>
       <section className="container">
+    <CardNotifications/>
+
         <NewStudent visible={isOpen} onClose={() => setIsOpen(false)} />
 
         <div className={style.layout}>
@@ -36,12 +37,12 @@ export const Students = () => {
             <div className={style.headerTable}>
               <p>Alunos</p>
               <div className={style.searchClass}>
-                <button className={style.btnFilter}>
+                {/* <button className={style.btnFilter}>
                   <FilterIcon size={16} />
-                </button>
+                </button> */}
                 <input
                   type="text"
-                  placeholder="Pesquisar Turma"
+                  placeholder="Pesquisar Aluno"
                   autoComplete="off"
                 />
                 <div>
@@ -56,7 +57,7 @@ export const Students = () => {
                   setIsOpen(true);
                 }}
               >
-                Novo Aluno
+                + Novo Aluno
               </button>
             </div>
             <div className={style.contentTable}>
@@ -88,8 +89,10 @@ export const Students = () => {
                         {student.situacao}
                       </td>
                       <td>
-                        <button className={style.btnTable}>Editar</button>
-                        <button className={style.btnTable}>Excluir</button>
+                        <button className={style.btnAction} title="Visualizar"><Eye className={style.icon} size={16} /></button>
+                         <button className={style.btnAction} title="Alterar Estado">
+                        <SwitchCamera className={style.icon} size={16}/>
+                         </button> 
                       </td>
                     </tr>
                   ))}
@@ -97,8 +100,9 @@ export const Students = () => {
               </table>
             </div>
             <div className={style.containerPaginator}>
-              {Array.from({ length: Math.max(0, pages) }).map((_, i) => (              <PaginatorStudents key={i} page={i + 1} />
-                         ))}
+              {Array.from({ length: Math.max(0, pages) }).map((_, i) => (
+                <PaginatorStudents key={i} page={i + 1} />
+              ))}
             </div>
           </section>
         </div>

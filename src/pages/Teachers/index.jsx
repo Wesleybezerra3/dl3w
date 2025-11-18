@@ -3,7 +3,7 @@ import style from "./style.module.css";
 import { FiltersFast } from "../../componets/FiltersFast";
 import { Addbtn } from "../../componets/ui/Addbtn";
 import { GraficPie } from "../../componets/GraficPie";
-import { FilterIcon, Search } from "lucide-react";
+import { Eye, FilterIcon, Search, SwitchCamera } from "lucide-react";
 import api from "../../services/api";
 import { useAppContext } from "../../context/AppContext";
 import { NewTeacher } from "../../componets/Modals/NewTeacher";
@@ -38,7 +38,7 @@ export const Teachers = () => {
                         <button className={style.btnFilter}>
                             <FilterIcon size={16}/>
                         </button>
-                    <input type="text" placeholder='Pesquisar Turma' autoComplete='off'/>
+                    <input type="text" placeholder='Pesquisar Professor' autoComplete='off'/>
                     <div>
                         <button className={style.btnSearch}>
                             <Search size={16}/>
@@ -51,7 +51,7 @@ export const Teachers = () => {
                   setIsOpen(true);
                 }}
               >
-                Novo Professor
+               + Novo Professor
               </button>
             </div>
             <div className={style.contentTable}>
@@ -77,8 +77,12 @@ export const Teachers = () => {
                       <td>{teacher.titulacao}</td>  
                       <td style={teacher.situacao === 'ativo' ? {color: 'green'} : {color: 'red'}}>{teacher.situacao}</td>
                       <td>
-                        <button className={style.btnTable}>Editar</button>
-                        <button className={style.btnTable}>Excluir</button>
+                        <td>
+                        <button className={style.btnAction} title="Visualizar"><Eye className={style.icon} size={16} /></button>
+                         <button className={style.btnAction} title="Alterar Estado">
+                        <SwitchCamera className={style.icon} size={16}/>
+                         </button> 
+                      </td>
                       </td>
                     </tr>
                   ))}

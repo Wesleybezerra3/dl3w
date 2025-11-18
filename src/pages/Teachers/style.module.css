@@ -71,6 +71,21 @@
     /* border: 1px solid var(--border-color); */
 }
 
+.btnAction {
+    background-color: transparent;
+    cursor: pointer;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 5px 8px;
+    border-radius: 5px;
+    /* font-size: 1.5em; */
+    transition: background-color 0.2s, color 0.2s;
+}
+.btnAction:hover{
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -160,9 +175,12 @@
     border: 1px solid var(--border-color);
     border-radius: 5px;
     padding: 0 10px;
-    font-size: 1em;
+    font-size: 0.9em;
+    font-weight: 500;
+    font-family: "Roboto", sans-serif;
     outline: none;
     color: var(--text-color);
+
 }
 
 .btnFilter {

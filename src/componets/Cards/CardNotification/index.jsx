@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
 
-const CardNotification = ({ text,resetKey }) => {
+const CardNotification = ({ text, resetKey }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {

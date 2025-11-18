@@ -19,6 +19,16 @@ export const ContextProvider = ({ children }) => {
   const [courses, setCurses] = useState([]);
   const [user, setUser] = useState(null);
 
+  const [notificationMessage, setNotificationMessage] = useState('');
+  const [resetKey, setResetKey] = useState();
+  const [typeNotification, setTypeNotification] = useState('');
+
+
+
+  useEffect(()=>{
+    console.log('Atualizados',notificationMessage)
+  },[notificationMessage,resetKey,typeNotification])
+
   // const [role, setRole] = useState(() => {
   //   const saved = localStorage.getItem("role");
   //   return saved ? JSON.parse(saved) : null;
@@ -117,7 +127,13 @@ export const ContextProvider = ({ children }) => {
         teachers,
         rooms,
         setRooms,
-        courses
+        courses,
+        setNotificationMessage,
+        notificationMessage,
+        typeNotification,
+        setTypeNotification,
+        setResetKey,
+        resetKey
       }}
     >
       {children}

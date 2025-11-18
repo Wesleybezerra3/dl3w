@@ -4,14 +4,16 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppContext } from "../../../context/AppContext";
 import api from "../../../services/api";
-import CardNotification from "../../../componets/Cards/CardNotification";
+import {CardNotifications} from "../../../componets/Cards/CardNotifications";
+import { Load } from "../../../componets/Loards/load";
 
 export const LoginStudent = () => {
   // const {role} = useAppContext();
 
-  const [textNotification, setTextNotification] = useState("");
-  const [resetKey, setResetKey] = useState(0);
+  const {setNotificationMessage,setResetKey, setTypeNotification} = useAppContext();
+  const [load, setLoad] = useState(false)
   const navigate = useNavigate();
+
   const [loginData, setLoginData] = useState({
     matricula: "",
     senha: "",
@@ -45,33 +47,42 @@ export const LoginStudent = () => {
 
   const login = async (data) => {
     try {
+    setLoad(true)
       const response = await api.post("/alunos/login", data, {
         headers: { "Content-Type": "application/json" },
       });
       const token = response.data.token;
+      const message = response.data.message
 
       if (response.status !== 200) {
         throw new Error("Erro ao logar usuario");
       }
       saveToken(token);
 
-      setTextNotification("Login realizado com sucesso!");
+      setNotificationMessage(message);
       setResetKey((prev) => prev + 1);
+      setTypeNotification("s")
       console.log("Usuario logado com sucesso", response.data);
 
       setTimeout(() => {
         navigate("/student/plataform");
       }, 2000);
     } catch (err) {
+      const message = err.response.data.message
+      setNotificationMessage(message);
+      setResetKey((prev) => prev + 1);
+      setTypeNotification("e")
       console.log("Erro ao logar usuario", err);
       return null;
+    }finally{
+      setLoad(false)
     }
   };
 
   return (
     <>
       <main>
-        <CardNotification text={textNotification} resetKey={resetKey} />
+        {/* <CardNotification text={textNotification} resetKey={resetKey} /> */}
         <form className={style.login} onSubmit={handleLogin}>
           <div className={style.headerLogin}>
             <h1>Entre com sua conta</h1>
@@ -103,7 +114,8 @@ export const LoginStudent = () => {
           </div>
           <div className={style.containerBtn}>
             <button type="submit" className={style.btnLogin}>
-              Entrar
+              <Load visible={load}/>
+              {load?'':'Entrar'}
             </button>
             <div>
               <Link

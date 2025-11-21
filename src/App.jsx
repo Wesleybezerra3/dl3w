@@ -18,6 +18,10 @@ import { PrivateRoutesStudent } from "./pages/PrivateRoutesStudent";
 import { PrivateRoutesAdmin } from "./pages/PrivateRoutesAdmin";
 import { Teachers } from "./pages/Teachers";
 import { Rooms } from "./pages/Rooms";
+import { StudentDinamic } from "./pages/StudentDinamic";
+import { TeacherDinamic } from "./pages/TeacherDinamic";
+import { ClassDinamic } from "./pages/ClassDinamic";
+import { RoomDinamic } from "./pages/RoomDinamic";
 
 function App() {
   return (
@@ -47,9 +51,16 @@ function App() {
                   element={<SubjectSchedules />}
                 />
                 <Route path="alunos" element={<Students />} />
+                <Route path="alunos/:matricula" element={<StudentDinamic />} />
+
                 <Route path="professores" element={<Teachers />} />
+                <Route path="professores/:matricula" element={<TeacherDinamic />} />
+
                 <Route path="turmas" element={<PageClass />} />
+                <Route path="turmas/:name" element={<ClassDinamic />} />
                 <Route path="salas" element={<Rooms />} />
+                <Route path="salas/:name" element={<RoomDinamic />} />
+
               </Route>
             </Route>
           </Route>

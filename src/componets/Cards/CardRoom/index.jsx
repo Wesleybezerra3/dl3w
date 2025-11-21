@@ -1,8 +1,10 @@
 import React from 'react'
 import style from './style.module.css'
 import { Edit2, Eye, Trash } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 export const CardRoom = ({nameRoom, location, capacidade, status, qtdturma}) => {
+  const navigator = useNavigate();
   return (
     <>
       <article className={style.cardRoom}>
@@ -25,7 +27,9 @@ export const CardRoom = ({nameRoom, location, capacidade, status, qtdturma}) => 
         </div>
 
         <div className={style.actions}>
-          <button className={style.btn}>
+          <button className={style.btn} onClick={()=>{
+            navigator(`/adm/dashboard/salas/${nameRoom}`)
+          }}>
             <Eye className={style.icon} />
             </button>
           <button className={style.btn}>

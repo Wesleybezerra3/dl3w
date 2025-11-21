@@ -1,4 +1,4 @@
-.selectRoleForm{
+.selectRoleForm {
     width: 100%;
     min-width: 350px;
     max-width: 400px;
@@ -9,44 +9,61 @@
     background-color: #ffff;
     border: 1px solid #dbdbdb;
     border-radius: 5px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.049) ;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.049);
     padding: 10px;
     font-family: 'Roboto', sans-serif;
 }
-.headerForm{
-    
+
+.headerForm {
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: space-between;
 }
-.headerForm h1{
+
+.headerForm h1 {
     color: #1f1f1f;
     font-size: 1rem;
     font-weight: 600;
 }
-.headerForm img{
+
+.headerForm img {
     width: 40px;
     height: 40px;
 }
-.select{
+
+.select {
     width: 100%;
     display: flex;
     align-items: center;
 }
-.select select{
+
+.select select {
     width: 100%;
-    padding: 4px;
+    padding: 8px;
     outline: none;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    font-weight: 600;
 }
-.containerBtn{
+
+.select option {
+    color: var(--text-color);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.containerBtn {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: right;
     margin-top: 10px;
 }
-.btnSelect{
+
+.btnSelect {
+    width: 100%;
     padding: 10px 20px;
     background-color: var(--primary-color);
     color: white;

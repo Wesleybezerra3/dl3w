@@ -4,13 +4,15 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../../context/AppContext";
 import api from "../../services/api";
-import CardNotification from "../../componets/Cards/CardNotification";
+import { Load } from "../../componets/Loards/load";
+import { Eye, EyeClosed } from "lucide-react";
 
 export const Login = () => {
   // const {role} = useAppContext();
 
-  const [textNotification, setTextNotification] = useState("");
-  const [resetKey, setResetKey] = useState(0);
+  const [load, setLoad] = useState(false)
+  const {setNotificationMessage,setResetKey, setTypeNotification} = useAppContext();
+  const [viewPassword, setViewPassword] = useState(false);
   const navigate = useNavigate();
   const [loginData, setLoginData] = useState({
     usuario: "",
@@ -19,26 +21,36 @@ export const Login = () => {
 
   const login = async (data) => {
     try {
+      setLoad(true)
       const response = await api.post("/adm/login", data, {
         headers: { "Content-Type": "application/json" },
       });
       const token = response.data.token;
+      const message = response.data.message;
+        
 
       if (response.status !== 200) {
         throw new Error("Erro ao logar usuario");
       }
       saveToken(token);
 
-      setTextNotification("Login realizado com sucesso!");
+      setNotificationMessage(message);
       setResetKey((prev) => prev + 1);
+      setTypeNotification('s')
 
       setTimeout(() => {
         navigate("/adm/dashboard");
       }, 2000);
 
     } catch (err) {
+        const message = err.response.data.message
+      setNotificationMessage(message);
+      setResetKey((prev) => prev + 1);
+      setTypeNotification("e")
       console.log("Erro ao logar usuario", err);
       return null;
+    }finally{
+      setLoad(false)
     }
   };
 
@@ -74,7 +86,6 @@ export const Login = () => {
   // },{})
   return (
     <>
-      <CardNotification text={textNotification} resetKey={resetKey} />
       <main>
         <form className={style.login} onSubmit={handleLogin}>
           <div className={style.headerLogin}>
@@ -93,21 +104,28 @@ export const Login = () => {
                 onChange={handleObj}
               />
             </div>
-            <div>
+            <div style={{position:'relative'}}>
               <label htmlFor="senha">Senha</label>
-              <input
-                type="password"
+              <input 
+                type={!viewPassword?'password':'text'}
                 name="senha"
                 className={style.input}
                 placeholder="Sua Senha"
                 value={loginData.senha}
                 onChange={handleObj}
               />
+              <div className={style.viewPassword} onClick={()=>{
+                setViewPassword(prev => !prev)
+              }}>
+                
+                {!viewPassword ?<EyeClosed/>:<Eye/>}
+              </div>
             </div>
           </div>
           <div className={style.containerBtn}>
             <button type="submit" className={style.btnLogin}>
-              Entrar
+              <Load visible={load}/>
+                            {load?'':'Entrar'}
             </button>
           </div>
         </form>

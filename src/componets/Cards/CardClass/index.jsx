@@ -1,8 +1,11 @@
 import React from 'react'
 import style from './style.module.css'
 import { Eye, SettingsIcon } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 export const CardClass = ({turmaName, salaName, cursoName, turno, qtdAlunos}) => {
+
+    const navigator = useNavigate();
   return (
     <>
         <article className={style.cardClass}>
@@ -24,7 +27,9 @@ export const CardClass = ({turmaName, salaName, cursoName, turno, qtdAlunos}) =>
                     </div>
                 </div>
                 <div className={style.actionsClass}>
-                    <button className={style.btnActions}>
+                    <button className={style.btnActions} onClick={()=>{
+                        navigator(`/adm/dashboard/turmas/${turmaName}`)
+                    }}>
                         <Eye size={16}/>
                     </button>
                     <button className={style.btnActions}>

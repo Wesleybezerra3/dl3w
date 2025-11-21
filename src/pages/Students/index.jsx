@@ -9,11 +9,13 @@ import api from "../../services/api";
 import { useAppContext } from "../../context/AppContext";
 import { PaginatorStudents } from "../../componets/Paginations/PaginatorStudents";
 import { CardNotifications} from "../../componets/Cards/CardNotifications";
+import { useNavigate } from "react-router-dom";
 
 export const Students = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { students, setStudents, classes } = useAppContext();
   const [resultSearch, setResultSearch] = useState([]);
+  const navigator = useNavigate();
 
   const pages = Math.ceil(students?.totalStudents / 10);
 
@@ -77,7 +79,7 @@ export const Students = () => {
                     <tr key={student.id}>
                       <td>{student.matricula}</td>
                       <td>{student.nome}</td>
-                      <td>{student.turma?.Curso?.nome}</td>
+                      <td>{student.turma?.curso?.nome}</td>
                       <td>{student.turma?.nome}</td>
                       <td
                         style={
@@ -89,7 +91,9 @@ export const Students = () => {
                         {student.situacao}
                       </td>
                       <td>
-                        <button className={style.btnAction} title="Visualizar"><Eye className={style.icon} size={16} /></button>
+                        <button className={style.btnAction} onClick={()=>{
+                          navigator(`/adm/dashboard/alunos/${student.matricula}`)
+                        }} title="Visualizar"><Eye className={style.icon} size={16} /></button>
                          <button className={style.btnAction} title="Alterar Estado">
                         <SwitchCamera className={style.icon} size={16}/>
                          </button> 

@@ -8,11 +8,13 @@ import api from "../../services/api";
 import { useAppContext } from "../../context/AppContext";
 import { NewTeacher } from "../../componets/Modals/NewTeacher";
 import { PaginatorTeacher } from "../../componets/Paginations/PaginatorTeacher";
+import { useNavigate } from "react-router-dom";
 
 
 export const Teachers = () => {
   const [isOpen, setIsOpen] = useState(false);
   const {teachers = []} = useAppContext();
+  const navigator = useNavigate();
 
   const pages = Math.ceil(teachers?.totalTeachers / 10);
 
@@ -78,7 +80,9 @@ export const Teachers = () => {
                       <td style={teacher.situacao === 'ativo' ? {color: 'green'} : {color: 'red'}}>{teacher.situacao}</td>
                       <td>
                         <td>
-                        <button className={style.btnAction} title="Visualizar"><Eye className={style.icon} size={16} /></button>
+                        <button className={style.btnAction} onClick={()=>{
+                          navigator(`/adm/dashboard/professores/${teacher.matricula}`)
+                        }} title="Visualizar"><Eye className={style.icon} size={16} /></button>
                          <button className={style.btnAction} title="Alterar Estado">
                         <SwitchCamera className={style.icon} size={16}/>
                          </button> 

@@ -75,11 +75,20 @@
 
 .definePassword {
     font-size: 0.9rem;
+    color: var(--text-color);
+    font-weight: 500;
+    text-align: left;
+    text-decoration: none;
+    margin-top: -5px;
+    transition: 0.2slinear;
+}
+.definePassword:hover{
     color: var(--primary-color);
     text-decoration: underline;
     font-weight: 600;
-    text-align: left;
-    margin-top: 10px;
+}
+.containerLink{
+    width: 100%;
 }
 
 .btnLogin {
@@ -97,3 +106,17 @@
     align-items: center;
     justify-content: center;
 }
+.passwordContainer{
+
+    position: relative;
+}
+
+ .viewPassword {
+    position: absolute;
+    top: 53%;
+    right: 0;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+    color: var(--text-color);
+    cursor: pointer;
+} 

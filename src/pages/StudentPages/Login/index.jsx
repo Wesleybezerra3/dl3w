@@ -6,12 +6,14 @@ import { useAppContext } from "../../../context/AppContext";
 import api from "../../../services/api";
 import {CardNotifications} from "../../../componets/Cards/CardNotifications";
 import { Load } from "../../../componets/Loards/load";
+import { Eye, EyeClosed } from "lucide-react";
 
 export const LoginStudent = () => {
   // const {role} = useAppContext();
 
   const {setNotificationMessage,setResetKey, setTypeNotification} = useAppContext();
   const [load, setLoad] = useState(false)
+  const [viewPassword, setViewPassword] = useState(false);
   const navigate = useNavigate();
 
   const [loginData, setLoginData] = useState({
@@ -102,14 +104,25 @@ export const LoginStudent = () => {
             </div>
             <div>
               <label htmlFor="senha">Senha</label>
-              <input
-                type="password"
-                name="senha"
-                className={style.input}
-                placeholder="Sua Senha"
-                value={loginData.senha}
-                onChange={handleObj}
-              />
+                 <div className={style.passwordContainer}>
+                <span
+                  className={style.viewPassword}
+                  onClick={() => {
+                    setViewPassword((prev) => !prev);
+                  }}
+                >
+                  {!viewPassword ? <EyeClosed /> : <Eye />}
+                </span>
+                <input
+                  type={!viewPassword ? "password" : "text"}
+                  name="senha"
+                  className={style.input}
+                  placeholder="Sua Senha"
+                  value={loginData.senha}
+                  onChange={handleObj}
+                />
+                
+              </div>
             </div>
           </div>
           <div className={style.containerBtn}>
@@ -117,7 +130,7 @@ export const LoginStudent = () => {
               <Load visible={load}/>
               {load?'':'Entrar'}
             </button>
-            <div>
+            <div className={style.containerLink}>
               <Link
                 to="/student/definir-senha"
                 className={style.definePassword}

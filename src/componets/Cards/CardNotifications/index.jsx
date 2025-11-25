@@ -34,12 +34,12 @@ export const CardNotifications = () => {
         style={{ display: !visible ? "none" : "flex" }}
       >
         <div>
-          <div className={style.check} style={{backgroundColor: typeNotification==='e'? '#f53636':'#59e259ff'}}>
+          <div className={style.check} style={{backgroundColor: typeNotification==='e'? '#f53636':'#099409ff'}}>
             <Check size={25} className={style.icon} color="#fff" />
           </div>
         </div>
         <div className={style.containerMessage}>
-          <p className={style.message} style={{color: typeNotification==='e'?'#f53636':'#59e259ff'}}>{notificationMessage}</p>
+          <p className={style.message} style={{color: typeNotification==='e'?'#f53636':'#099409ff'}}>{notificationMessage}</p>
         </div>
         <div>
           <div className={style.cancel}>

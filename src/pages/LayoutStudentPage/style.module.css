@@ -1,0 +1,12 @@
+.Layout{
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+.content{
+    width: 100%;
+    overflow-y: auto;
+    height: 100vh;
+    scroll-behavior: smooth;
+}

@@ -1,0 +1,123 @@
+.info{
+    width: 100%;
+    padding: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--secudary-color);
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+}
+.info h1{
+    font-size: 1.2em;
+}
+.containerInput{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.containerInput label{
+    margin-bottom: -10px;
+    font-weight: 400;
+}
+.containerInput input{
+    width: 300px;
+    padding: 8px 10px;
+    background-color: white;
+    border: 1px solid var(--border-color);
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+    font-weight: 500;
+    border-radius: 5px;
+}
+.containerInput input:disabled{
+    color: var(--gray-color);
+}
+.containerInfo{
+    width: 100%;
+    display: flex;
+    /* align-items: center; */
+    gap: 2em;
+    /* flex-direction: column; */
+}
+
+.containerBtn{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: 1em;
+
+}
+
+.btn{
+    width: 100px;
+    height: 40px;
+    padding: 5px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    font-size: 0.8em;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+    transition: opacity 0.3s ease;
+
+}
+.btn, .btnC :hover{
+    opacity: 0.9;
+}
+
+.btnC{
+    width: 100px;
+    height: 40px;
+    padding: 5px;
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    font-size: 0.8em;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+    transition: opacity 0.3s ease;
+
+}
+.btnC:disabled{
+    opacity: 0.4;
+    cursor:auto;
+}
+.btn:disabled{
+    opacity: 0.4;
+    cursor:auto;
+}
+
+.headerInfo{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.headerInfo button{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: var(--primary-color);
+    transition: 0.2s linear;
+}
+.headerInfo button:hover{
+    scale: 1.1;
+}

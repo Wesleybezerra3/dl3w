@@ -23,6 +23,11 @@ export const ContextProvider = ({ children }) => {
   const [resetKey, setResetKey] = useState();
   const [typeNotification, setTypeNotification] = useState('');
 
+  const [refreshKey, setRefreshKey] = useState(0);
+
+  // função que atualiza a flag
+  const refresh = () => setRefreshKey(prev => prev + 1);
+
 
 
   useEffect(()=>{
@@ -59,7 +64,7 @@ export const ContextProvider = ({ children }) => {
       }
     };
     getAllStudents();
-  }, []);
+  }, [refreshKey]);
 
   useEffect(() => {
     const getAllTeachers = async () => {
@@ -72,7 +77,7 @@ export const ContextProvider = ({ children }) => {
       }
     };
     getAllTeachers();
-  }, []);
+  }, [refreshKey]);
 
   useEffect(() => {
     const getClasses = async () => {
@@ -85,7 +90,7 @@ export const ContextProvider = ({ children }) => {
       }
     };
     getClasses();
-  }, []);
+  }, [refreshKey]);
 
   useEffect(() => {
     const getRooms = async () => {
@@ -99,7 +104,7 @@ export const ContextProvider = ({ children }) => {
     };
 
     getRooms();
-  },[]);
+  },[refreshKey]);
 
   useEffect(()=>{
     const getCourses = async()=>{
@@ -112,7 +117,7 @@ export const ContextProvider = ({ children }) => {
       }
     }
     getCourses()
-  },[])
+  },[refreshKey])
 
   return (
     <AppContext.Provider
@@ -133,7 +138,9 @@ export const ContextProvider = ({ children }) => {
         typeNotification,
         setTypeNotification,
         setResetKey,
-        resetKey
+        resetKey,
+        refresh,
+        refreshKey
       }}
     >
       {children}

@@ -4,18 +4,20 @@ import { useEffect } from "react";
 import api from "../../services/api";
 import { useState } from "react";
 import { useAppContext } from "../../context/AppContext";
-import { Edit } from "lucide-react";
+import { AwardIcon, Edit } from "lucide-react";
+import { Load } from "../../componets/Loards/load";
 
 export const StudentDinamic = () => {
-  const { setNotificationMessage, setResetKey, setTypeNotification } =
+  const { setNotificationMessage, setResetKey, setTypeNotification, refresh } =
     useAppContext();
+  const [load, setLoad] = useState(false);
+
   const { matricula } = useParams();
   const [isEdit, setIsEdit] = useState(true);
   const [student, setStudent] = useState(null);
 
   const [formData, setFormData] = useState({
     nome: "",
-
     data_nascimento: "",
     cpf: "",
     email: "",
@@ -64,72 +66,191 @@ export const StudentDinamic = () => {
     getStudent();
   }, []);
 
+  const handleForm = async (e) => {
+    e.preventDefault();
+    try {
+      if (!formData) {
+        return;
+      }
+      setLoad(true);
+      const response = await api.put("/alunos", formData, {
+        params: { matricula },
+      });
+      console.log(response.data.message);
+      const message = response.data.message;
+
+      setNotificationMessage(message);
+      setResetKey((prev) => prev + 1);
+      setTypeNotification("s");
+      refresh();
+    } catch (err) {
+      console.log(err);
+
+      const message = err.response.data.message;
+      setNotificationMessage(message);
+      setResetKey((prev) => prev + 1);
+      setTypeNotification("e");
+    } finally {
+      setLoad(false);
+    }
+  };
+
   return (
     <>
       <section className="container">
         <section className={style.info}>
-          <div className={style.headerInfo}>
-            <h1>Informações pessoais</h1>
-            <button onClick={()=>{
-                setIsEdit(prev => !prev)
-            }}>
-              <Edit />
-            </button>
-          </div>
-          <div className={style.containerInfo}>
-            <div className={style.containerInput}>
-              <label htmlFor="nome">Nome</label>
-              <input
-                type="text"
-                name="nome"
-                value={formData.nome}
-                onChange={handleObj}
-                disabled={isEdit}
-              />
-
-              <label htmlFor="data">Data de nascimento</label>
-              <input
-                type="text"
-                name="
-                data_nascimento"
-                value={formData.data_nascimento}
-                disabled={isEdit}
-              />
-              <label htmlFor="cpf">CPF</label>
-              <input
-                type="text"
-                name="cpf"
-                value={formData.cpf}
-                disabled={isEdit}
-              />
+          <form onSubmit={handleForm}>
+            <div className={style.headerInfo}>
+              <h1>Informações pessoais</h1>
+              <button
+                type="button"
+                onClick={() => {
+                  setIsEdit((prev) => !prev);
+                }}
+              >
+                <Edit />
+              </button>
             </div>
+            <div className={style.containerInfo}>
+              <div className={style.containerInput}>
+                <label htmlFor="nome">Nome</label>
+                <input
+                  type="text"
+                  name="nome"
+                  value={formData.nome}
+                  onChange={handleObj}
+                  disabled={isEdit}
+                  autoComplete="false"
+                />
 
-            <div className={style.containerInput}>
-              <label htmlFor="matricula">Matrícula</label>
-              <input type="text" name="matricula" value={matricula} disabled />
+                <label htmlFor="data">Data de nascimento</label>
+                <input
+                  type="date"
+                  name="data_nascimento"
+                  onChange={handleObj}
+                  value={formData.data_nascimento}
+                  disabled={isEdit}
+                />
+                <label htmlFor="cpf">CPF</label>
+                <input
+                  type="text"
+                  name="cpf"
+                  onChange={handleObj}
+                  value={formData.cpf}
+                  disabled={isEdit}
+                />
+              </div>
 
-              <label htmlFor="email">E-mail</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                disabled={isEdit}
-              />
-              {/* <label htmlFor="telefone">Telefone</label>
+              <div className={style.containerInput}>
+                <label htmlFor="matricula">Matrícula</label>
+                <input
+                  type="text"
+                  name="matricula"
+                  value={matricula}
+                  disabled
+                />
+
+                <label htmlFor="email">E-mail</label>
+                <input
+                  type="email"
+                  name="email"
+                  onChange={handleObj}
+                  value={formData.email}
+                  disabled={isEdit}
+                />
+                {/* <label htmlFor="telefone">Telefone</label>
               <input type="text" name="telefone" /> */}
+              </div>
             </div>
-          </div>
-          <div className={style.containerBtn}>
-            <button className={style.btnC} disabled={isEdit}>
-              Cancelar
-            </button>
-            <button className={style.btn} disabled={isEdit}>
-              Salvar
-            </button>
-          </div>
+            <div className={style.containerBtn}>
+              <button
+                type="button"
+                className={style.btnC}
+                disabled={isEdit}
+                onClick={() => {
+                  setFormData(student);
+                  setIsEdit(true)
+                }}
+              >
+                Cancelar
+              </button>
+              <button type="submit" className={style.btn} disabled={isEdit}>
+                <Load visible={load} />
+                {load ? "" : "Salvar"}
+              </button>
+            </div>
+          </form>
+  
         </section>
 
-        <h1>{matricula}</h1>
+        <section className={style.containerInfoAca}>
+           <div className={style.card}> 
+            <div>
+              <h1>
+                Informações academicas
+              </h1>
+            </div>
+            <div className={style.containerInfos}>
+              
+                <div className={style.infos}>
+                  <p>
+                    Curso
+                  </p>
+                  <p>
+                    {student?.turma?.curso?.nome}
+                  </p>
+                </div>
+                <div className={style.infos}>
+                  <p>
+                    Turno
+                  </p>
+                  <p>
+                    {student?.turma?.turno}
+                  </p>
+                </div>
+
+                  <div className={style.infos}>
+                  <p>
+                    Semestre/Periodo
+                  </p>
+                  <p>
+                    {student?.turma?.semestre}
+                  </p>
+                </div>
+
+                  <div className={style.infos}>
+                  <p>
+                    Situação
+                  </p>
+                  <p style={{color: student?.situacao ==='ativo'?'green':"red"}}>
+                    {student?.situacao}
+                  </p>
+                </div>
+                  <div className={style.infos}>
+                  <p>
+                    Turma
+                  </p>
+                  <p>
+                    {student?.turma?.nome}
+                  </p>
+                </div>
+            </div>
+           </div>
+           <div className={style.card}>
+            <div>
+              <h1>Resumo</h1>
+            </div>
+            <div>
+              <button>
+                Presença
+              </button>
+
+              <button>
+                Nota
+              </button>
+            </div>
+           </div>
+        </section>
       </section>
     </>
   );

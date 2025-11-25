@@ -32,7 +32,7 @@ export const Students = () => {
 
         <div className={style.layout}>
           <section className={style.containerFilters}>
-            <FiltersFast />
+            {/* <FiltersFast /> */}
             {/* <GraficPie/> */}
           </section>
           <section className={style.containerTable}>
@@ -94,6 +94,7 @@ export const Students = () => {
                         <button className={style.btnAction} onClick={()=>{
                           navigator(`/adm/dashboard/alunos/${student.matricula}`)
                         }} title="Visualizar"><Eye className={style.icon} size={16} /></button>
+
                          <button className={style.btnAction} title="Alterar Estado">
                         <SwitchCamera className={style.icon} size={16}/>
                          </button> 

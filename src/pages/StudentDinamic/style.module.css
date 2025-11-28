@@ -6,13 +6,17 @@
     background-color: var(--secudary-color);
     font-family: 'Roboto', sans-serif;
     color: var(--text-color);
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+    /* flex-direction: column; */
     gap: 1em;
 }
 
 .info h1 {
     font-size: 1.2em;
+}
+.content{
+    display: flex;
+    gap: 2em;
 }
 
 .containerInfoAca {
@@ -52,12 +56,16 @@
     outline: none;
     font-family: 'Roboto', sans-serif;
     color: var(--text-color);
-    font-weight: 500;
+    font-size: 1em;
+    /* font-weight: 500; */
     border-radius: 5px;
+    font-weight: 500;
+
 }
 
 .containerInput input:disabled {
     color: var(--gray-color);
+    font-weight: 500;
 }
 
 .containerInfo {
@@ -173,4 +181,37 @@
 
 .infos p:nth-child(2) {
     font-weight: bold;
+}
+.containerActions{
+    padding: 10px;
+    width: 100%;
+  
+}
+.actions{
+  display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+}
+.containerActions h1{
+    margin-bottom: 10px;
+}
+
+.cardActions{
+    width: 80%;
+    height: 100px;
+    border: 1px solid var(--border-color);
+    padding: 16px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.050);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition:0.2s linear ;
+    font-weight: bold;
+}
+.cardActions:hover{
+    scale: 0.98;
+
 }

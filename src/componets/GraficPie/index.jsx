@@ -1,32 +1,79 @@
-import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import React, { useEffect, useState } from "react";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+import api from "../../services/api";
 
-const data = [
-  { name: 'Alunos', value: 400 },
-  { name: 'Professores', value: 100 },
-];
+export function GraficoDePizza() {
+  const [data, setData] = useState([]);
 
-const cores = ['#2563EB', '#16A34A'];
+  const getActive = async () => {
+    try {
+      const response = await api.get("/alunos/relatorios/active");
+      return response.data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-export function GraficPie() {
+  const getInactive = async () => {
+    try {
+      const response = await api.get("/alunos/relatorios/inactive");
+      return response.data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+  const getActiveInactive = async () => {
+    try {
+      const active = await getActive();
+      const inactive = await getInactive();
+
+      console.log("ACTIVE RAW:", active);
+      console.log("INACTIVE RAW:", inactive);
+
+      setData([
+        { name: "Ativos", value: active?.students?.length ?? 0 },
+        { name: "Inativos", value: inactive?.students?.length ?? 0 },
+      ]);
+    } catch (error) {
+      console.error("Erro ao buscar alunos ativos/inativos:", error);
+    }
+  };
+
+  getActiveInactive();
+}, []);
+
+  const COLORS = ["#0A51BD", "#FF6C02"];
+
   return (
-    <ResponsiveContainer width="100%" height={300}>
-      <PieChart>
-        <Pie
-          data={data}
-          cx="50%"
-          cy="50%"
-          labelLine={false}
-          outerRadius={100}
-          dataKey="value"
-          label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
-        >
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={cores[index % cores.length]} />
-          ))}
-        </Pie>
-        <Tooltip />
-        <Legend />
-      </PieChart>
-    </ResponsiveContainer>
+    <div style={{ width: "100%", height: 300 }}>
+      <ResponsiveContainer>
+        <PieChart>
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            label
+            outerRadius={90}
+            dataKey="value"
+          >
+            {data.map((_, index) => (
+              <Cell key={index} fill={COLORS[index % COLORS.length]} />
+            ))}
+          </Pie>
+
+          <Tooltip />
+          <Legend />
+        </PieChart>
+      </ResponsiveContainer>
+    </div>
   );
 }

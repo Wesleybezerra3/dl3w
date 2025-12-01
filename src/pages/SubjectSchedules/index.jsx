@@ -1,92 +1,52 @@
-import React, { use, useEffect } from "react";
+import React, { useEffect } from "react";
 import style from "./style.module.css";
 import { Addbtn } from "../../componets/ui/Addbtn";
 import { CardSubject } from "../../componets/Cards/CardSubject";
-import { Timetable } from "../../componets/Timetable";
 import { useAppContext } from "../../context/AppContext";
 
 export const SubjectSchedules = () => {
-  const {course} = useAppContext();
+  const { course } = useAppContext();
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(course);
-  },[])
-  return (
-    <>
-      <section className="container">
-        <section className={style.subjectsSection}>
-          <div className={style.header}>
-            <p>Disciplinas</p>
-            <div>
-              <input type="text" />
-            </div>
+  }, [course]);
 
+  const subjects = [
+    { discipline: "Lógica de Programação", workload: "60h", modality: "Presencial" },
+    { discipline: "Banco de Dados", workload: "60h", modality: "Presencial" },
+    { discipline: "Desenvolvimento Web", workload: "60h", modality: "Presencial" },
+    { discipline: "Inglês", workload: "60h", modality: "EAD" },
+    { discipline: "Matemática", workload: "60h", modality: "EAD" },
+    { discipline: "Redes de Computadores", workload: "60h", modality: "Presencial" },
+  ];
+
+  return (
+    <section className="container">
+      <div className={style.subjectsSection}>
+        <header className={style.header}>
+          <h2>Disciplinas</h2>
+
+          <div className={style.actions}>
+            <input
+              className={style.search}
+              type="text"
+              placeholder="Buscar disciplina..."
+            />
             <Addbtn text={"+ Nova disciplina"} />
           </div>
+        </header>
 
-          <div className={style.subjects}>
+        <div className={style.subjects}>
+          {subjects.map((sub, index) => (
             <CardSubject
-              discipline={"Lógica de Programação"}
-              workload={"60h"}
-              modality={"Presencial"}
+              key={index}
+              discipline={sub.discipline}
+              workload={sub.workload}
+              modality={sub.modality}
             />
-            <CardSubject
-              discipline={"Banco de Dados"}
-              workload={"60h"}
-              modality={"Presencial"}
-            />
-            <CardSubject
-              discipline={"Desenvolvimento Web"}
-              workload={"60h"}
-              modality={"Presencial"}
-            />
-            <CardSubject
-              discipline={"Inglês"}
-              workload={"60h"}
-              modality={"EAD"}
-            />
-            <CardSubject
-              discipline={"Matemática"}
-              workload={"60h"}
-              modality={"EAD"}
-            />
-            <CardSubject
-              discipline={"Redes de Computadores"}
-              workload={"60h"}
-              modality={"Presencial"}
-            />
-            <CardSubject
-              discipline={"Redes de Computadores"}
-              workload={"60h"}
-              modality={"Presencial"}
-            />
-            <CardSubject
-              discipline={"Redes de Computadores"}
-              workload={"60h"}
-              modality={"Presencial"}
-            />
-            <CardSubject
-              discipline={"Redes de Computadores"}
-              workload={"60h"}
-              modality={"Presencial"}
-            />
-          </div>
-        </section>
-
-        <section className={style.schedulesSection}>
-          <div className={style.header}>
-            <p>Horários</p>
-            <div>
-              <input type="text" />
-            </div>
-            <Addbtn text={"+ Novo Horário"} />
-          </div>
-
-          <div className={style.schedules}>
-            <Timetable/>
-          </div>
-        </section>
-      </section>
-    </>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };

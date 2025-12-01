@@ -17,7 +17,9 @@ export const ContextProvider = ({ children }) => {
   const [classes, setClasses] = useState([]);
   const [rooms, setRooms] = useState([]);
   const [courses, setCurses] = useState([]);
+  const [disciplines, setDisciplines] = useState([]);
   const [user, setUser] = useState(null);
+  const [visibleLoad, setVisibleLoad] = useState(false)
 
   const [notificationMessage, setNotificationMessage] = useState('');
   const [resetKey, setResetKey] = useState();
@@ -30,9 +32,8 @@ export const ContextProvider = ({ children }) => {
 
 
 
-  useEffect(()=>{
-    console.log('Atualizados',notificationMessage)
-  },[notificationMessage,resetKey,typeNotification])
+  // useEffect(()=>{
+  // },[notificationMessage,resetKey,typeNotification])
 
   // const [role, setRole] = useState(() => {
   //   const saved = localStorage.getItem("role");
@@ -64,6 +65,20 @@ export const ContextProvider = ({ children }) => {
       }
     };
     getAllStudents();
+  }, [refreshKey]);
+
+  useEffect(() => {
+    const getAllDisciplines = async () => {
+      try {
+        const response = await api.get("/disciplinas");
+        setDisciplines(response.data);
+        console.log('Disciplinas',response.data)
+
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getAllDisciplines();
   }, [refreshKey]);
 
   useEffect(() => {
@@ -140,7 +155,11 @@ export const ContextProvider = ({ children }) => {
         setResetKey,
         resetKey,
         refresh,
-        refreshKey
+        refreshKey,
+        setVisibleLoad,
+        visibleLoad,
+        disciplines
+
       }}
     >
       {children}

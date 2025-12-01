@@ -1,0 +1,49 @@
+
+
+.title {
+  font-family: "Roboto", sans-serif;
+  color: var(--text-color);
+  font-size: 1.3em;
+  font-weight: 700;
+  margin-bottom: -25px;
+}
+
+.sectionGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.reportSection {
+  background: var(--secudary-color);
+  padding: 20px;
+  border-radius: 8px;
+
+  border: 1px solid #e8e8e8;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+
+  transition: 0.2s;
+}
+
+.reportSection:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+}
+
+.reportSection h2 {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+.cardList{
+    display: flex;
+    gap: 2em;
+}

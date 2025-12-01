@@ -5,28 +5,7 @@ import { useAppContext } from "../../../context/AppContext";
 
 export const NewStudent = ({ visible, onClose }) => {
   const { classes } = useAppContext();
-  const cursos = [
-    "ADS",
-    "Direito",
-    "Engenharia Civil",
-    "Administração",
-    "Pedagogia",
-    "Enfermagem",
-    "Psicologia",
-    "Arquitetura",
-    "Biomedicina",
-    "Educação Física",
-    "Nutrição",
-  ];
-  const turmas = [
-    1,
-    "0Ad20-4° - T",
-    "0Ad21-3° - N",
-    "0Ad21-3° - T",
-    "0Ad22-2° - N",
-  ];
  
-
   const [form, setForm] = useState({
     nome: "",
     cpf: "",

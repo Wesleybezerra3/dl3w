@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./style.module.css";
-import { Backpack, BookTextIcon, CheckSquare, CogIcon, DoorOpen, Edit2, LogOut, NotepadText, PieChart, Users2, UserSquare } from "lucide-react";
+import { Backpack, BookTextIcon, CheckSquare, CogIcon, DoorOpen, Edit2, GraduationCap, LogOut, NotepadText, PieChart, Users2, UserSquare } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 
 export const MenuSide = () => {
@@ -78,17 +78,17 @@ export const MenuSide = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="" className={style.links}>
+                  <Link to="/adm/dashboard/cursos" className={style.links}>
                     {" "}
-                    <CheckSquare className={style.icon} />
-                    <span>Presenças</span>
+                    <GraduationCap className={style.icon} />
+                    <span>Cursos</span>
                   </Link>
                 </li>
                 <li>
-                  <Link to="" className={style.links}>
+                  <Link to="/adm/dashboard/relatorios" className={style.links}>
                     {" "}
                     <NotepadText className={style.icon} />
-                    <span>Relatórios e Logs</span>
+                    <span>Relatórios</span>
                   </Link>
                 </li>
               </ul>

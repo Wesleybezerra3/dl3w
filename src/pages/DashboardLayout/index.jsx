@@ -4,10 +4,12 @@ import { MenuSide } from "../../componets/ui/MenuSide";
 import { HeaderDashboard } from "../../componets/HeaderDashboard";
 import {CardNotifications} from '../../componets/Cards/CardNotifications'
 import { Outlet } from "react-router-dom";
+import { PageLoad } from "../../componets/Loards/pageLoad";
 
 export const DashboardLayout = () => {
   return (
     <main className={style.dashboardLayout}>
+      <PageLoad/>
       <CardNotifications/>
       <MenuSide/>
       <section className={style.content}>

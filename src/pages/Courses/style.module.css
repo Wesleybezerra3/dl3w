@@ -1,0 +1,71 @@
+.container {
+  width: 100%;
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ------- HEADER ------- */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header p {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+/* ------- SEARCH ------- */
+.searchWrapper input {
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  outline: none;
+  width: 240px;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.searchWrapper input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}
+
+/* ------- LISTA ------- */
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.empty {
+  opacity: 0.6;
+  font-style: italic;
+}
+
+/* Scrollbar */
+.list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.list::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+.list::-webkit-scrollbar-track {
+  background: #f2f2f2;
+}

@@ -22,6 +22,12 @@ import { StudentDinamic } from "./pages/StudentDinamic";
 import { TeacherDinamic } from "./pages/TeacherDinamic";
 import { ClassDinamic } from "./pages/ClassDinamic";
 import { RoomDinamic } from "./pages/RoomDinamic";
+import { Repots } from "./pages/Repots";
+import { Courses } from "./pages/Courses";
+import { LoginTeacher } from "./pages/TeacherPages/Login";
+import { PlataformLayouTeacher } from "./pages/TeacherPages/PlataformLayaout";
+import { HomeTeacher } from "./pages/TeacherPages/Home";
+import { PrivateRoutesTeacher } from "./pages/PrivateRoutesTeacher";
 
 function App() {
   return (
@@ -38,6 +44,11 @@ function App() {
             <Route path="student">
               <Route path="acess" element={<FirstAcess />} />
               <Route path="login" element={<LoginStudent />} />
+              <Route path="definir-senha" element={<PasswordDefine />} />
+            </Route>
+            
+            <Route path="teacher">
+              <Route path="login" element={<LoginTeacher />} />
               <Route path="definir-senha" element={<PasswordDefine />} />
             </Route>
           </Route>
@@ -60,6 +71,8 @@ function App() {
                 <Route path="turmas/:name" element={<ClassDinamic />} />
                 <Route path="salas" element={<Rooms />} />
                 <Route path="salas/:name" element={<RoomDinamic />} />
+                <Route path="cursos" element={<Courses />} />
+                <Route path="relatorios" element={<Repots />} />
 
               </Route>
             </Route>
@@ -70,6 +83,16 @@ function App() {
               <Route path="plataform" element={<PlataformLayout />}>
                 <Route index element={<HomeStudent />} />
                 <Route path="home" element={<HomeStudent />} />
+                <Route path="mycourse" element={<MyCourse />} />
+              </Route>
+            </Route>
+          </Route>
+
+           <Route element={<PrivateRoutesTeacher />}>
+            <Route path="teacher">
+              <Route path="plataform" element={<PlataformLayouTeacher />}>
+                <Route index element={<HomeTeacher />} />
+                <Route path="home" element={<HomeTeacher />} />
                 <Route path="mycourse" element={<MyCourse />} />
               </Route>
             </Route>

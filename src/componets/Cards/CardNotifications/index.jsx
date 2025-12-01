@@ -24,7 +24,7 @@ export const CardNotifications = () => {
         setNotificationMessage(clearValue);
         setTypeNotification(clearValue);
         // setResetKey()
-      }, 4000);
+      }, 3000);
     }
   }, [notificationMessage, resetKey]);
   return (

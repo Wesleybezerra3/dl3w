@@ -1,0 +1,88 @@
+.header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 999;
+    background-color: var(--secudary-color);
+    top: 0;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    padding: 10px;
+}
+
+.header img {
+    width: 100px;
+}
+
+header button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+.content {
+    /* margin-top: 0px; */
+    padding: 10px;
+}
+
+.containerWelcome {
+  width: 100%;
+  margin-top: 80px;
+}
+
+.containerWelcome h1 {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: var(--text-color);
+  font-family: "Roboto", sans-serif;
+  padding: 0px 20px;
+}
+
+.courseName {
+  font-size: 0.6em;
+  font-weight: 500;
+  color: var(--primary-color);
+  margin-top: 10px;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+.carroselPeriods {
+  margin-top: 5px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+}
+
+.viewport {
+  width: 240px;
+  /* largura visível do período */
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  transition: transform 400ms ease;
+}
+
+.slide {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnPeriods {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.iconBtn {
+  color: var(--primary-color);
+}

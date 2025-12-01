@@ -25,6 +25,11 @@ export const SelectRole = () => {
             console.log(selectValue)
             return;
         }
+        if (selectValue === "Professor") {
+            navigate('/teacher/login')
+            console.log(selectValue)
+            return;
+        }
     }
   return (
     <>

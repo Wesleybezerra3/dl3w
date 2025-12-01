@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 import style from "./style.module.css";
 import { FiltersFast } from "../../componets/FiltersFast";
 import { Addbtn } from "../../componets/ui/Addbtn";
-import { GraficPie } from "../../componets/GraficPie";
 import { NewStudent } from "../../componets/Modals/NewStudent";
 import { Eye, FilterIcon, Search, SwitchCamera, Trash } from "lucide-react";
 import api from "../../services/api";
 import { useAppContext } from "../../context/AppContext";
 import { PaginatorStudents } from "../../componets/Paginations/PaginatorStudents";
-import { CardNotifications} from "../../componets/Cards/CardNotifications";
+import { CardNotifications } from "../../componets/Cards/CardNotifications";
 import { useNavigate } from "react-router-dom";
 
 export const Students = () => {
@@ -16,6 +15,9 @@ export const Students = () => {
   const { students, setStudents, classes } = useAppContext();
   const [resultSearch, setResultSearch] = useState([]);
   const navigator = useNavigate();
+  const [dataSearch, setDataSearch] = useState({
+    studentName: "",
+  });
 
   const pages = Math.ceil(students?.totalStudents / 10);
 
@@ -23,10 +25,33 @@ export const Students = () => {
     console.log(students);
   }, [students]);
 
+  const handleObj = (e) => {
+    const { name, value } = e.target;
+    setDataSearch({ ...dataSearch, [name]: value });
+  };
+
+  const searchRoom = async (data) => {
+    try {
+      if (Object.keys(data).length === 0) {
+        setResultSearch([]);
+        return;
+      }
+      console.log(data);
+      const response = await api.get("/alunos/search", {
+        params: data,
+      });
+      console.log(response.data);
+      setResultSearch(Array.isArray(response.data) ? response.data : []);
+    } catch (err) {
+      console.log(err);
+      setResultSearch([]);
+    }
+  };
+
   return (
     <>
       <section className="container">
-    <CardNotifications/>
+        <CardNotifications />
 
         <NewStudent visible={isOpen} onClose={() => setIsOpen(false)} />
 
@@ -44,11 +69,17 @@ export const Students = () => {
                 </button> */}
                 <input
                   type="text"
-                  placeholder="Pesquisar Aluno"
+                  placeholder="Pesquisar Sala"
                   autoComplete="off"
+                  onChange={handleObj}
+                  name="studentName"
+                  value={dataSearch.studentName}
                 />
                 <div>
-                  <button className={style.btnSearch}>
+                  <button
+                    className={style.btnSearch}
+                    onClick={() => searchRoom(dataSearch)}
+                  >
                     <Search size={16} />
                   </button>
                 </div>
@@ -75,32 +106,81 @@ export const Students = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {students?.students?.map((student) => (
-                    <tr key={student.id}>
-                      <td>{student.matricula}</td>
-                      <td>{student.nome}</td>
-                      <td>{student.turma?.curso?.nome}</td>
-                      <td>{student.turma?.nome}</td>
-                      <td
-                        style={
-                          student.situacao === "ativo"
-                            ? { color: "green" }
-                            : { color: "red" }
-                        }
-                      >
-                        {student.situacao}
-                      </td>
-                      <td>
-                        <button className={style.btnAction} onClick={()=>{
-                          navigator(`/adm/dashboard/alunos/${student.matricula}`)
-                        }} title="Visualizar"><Eye className={style.icon} size={16} /></button>
+                  {resultSearch.length > 0
+                    ? resultSearch.map((result) => (
+                        <tr key={result.id}>
+                          <td>{result.matricula}</td>
+                          <td>{result.nome}</td>
+                          <td>{result.turma?.curso?.nome}</td>
+                          <td>{result.turma?.nome}</td>
+                          <td
+                            style={
+                              result.situacao === "ativo"
+                                ? { color: "green" }
+                                : { color: "red" }
+                            }
+                          >
+                            {result.situacao}
+                          </td>
+                          <td>
+                            <button
+                              className={style.btnAction}
+                              onClick={() => {
+                                navigator(
+                                  `/adm/dashboard/alunos/${result.matricula}`
+                                );
+                              }}
+                              title="Visualizar"
+                            >
+                              <Eye className={style.icon} size={16} />
+                            </button>
 
-                         <button className={style.btnAction} title="Alterar Estado">
-                        <SwitchCamera className={style.icon} size={16}/>
-                         </button> 
-                      </td>
-                    </tr>
-                  ))}
+                            <button
+                              className={style.btnAction}
+                              title="Alterar Estado"
+                            >
+                              <SwitchCamera className={style.icon} size={16} />
+                            </button>
+                          </td>
+                        </tr>
+                      ))
+                    : students?.students?.map((student) => (
+                        <tr key={student.id}>
+                          <td>{student.matricula}</td>
+                          <td>{student.nome}</td>
+                          <td>{student.turma?.curso?.nome}</td>
+                          <td>{student.turma?.nome}</td>
+                          <td
+                            style={
+                              student.situacao === "ativo"
+                                ? { color: "green" }
+                                : { color: "red" }
+                            }
+                          >
+                            {student.situacao}
+                          </td>
+                          <td>
+                            <button
+                              className={style.btnAction}
+                              onClick={() => {
+                                navigator(
+                                  `/adm/dashboard/alunos/${student.matricula}`
+                                );
+                              }}
+                              title="Visualizar"
+                            >
+                              <Eye className={style.icon} size={16} />
+                            </button>
+
+                            <button
+                              className={style.btnAction}
+                              title="Alterar Estado"
+                            >
+                              <SwitchCamera className={style.icon} size={16} />
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
                 </tbody>
               </table>
             </div>

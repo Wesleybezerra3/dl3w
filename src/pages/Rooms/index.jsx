@@ -5,7 +5,7 @@ import { CardRoom } from "../../componets/Cards/CardRoom";
 import { useAppContext } from "../../context/AppContext";
 import { NewSala } from "../../componets/Modals/NewSala";
 import api from "../../services/api";
-import {  PaginatorRoom } from "../../componets/Paginations/PaginatorRoom";
+import { PaginatorRoom } from "../../componets/Paginations/PaginatorRoom";
 
 export const Rooms = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,30 +15,30 @@ export const Rooms = () => {
   const pages = Math.ceil(rooms?.total_rooms / 8);
 
   const [dataSearch, setDataSearch] = useState({
-    roomName:'',
-  })
-   const handleObj = (e) => {
+    roomName: "",
+  });
+  const handleObj = (e) => {
     const { name, value } = e.target;
     setDataSearch({ ...dataSearch, [name]: value });
   };
 
-  const searchRoom = async(data)=>{
-    try{
-       if (Object.keys(data).length === 0) {
+  const searchRoom = async (data) => {
+    try {
+      if (Object.keys(data).length === 0) {
         setResultSearch([]);
         return;
       }
-      console.log(data)
-      const response = await api.get('/salas/search',{
-        params: data
-      })
-      console.log(response.data)
+      console.log(data);
+      const response = await api.get("/salas/search", {
+        params: data,
+      });
+      console.log(response.data);
       setResultSearch(Array.isArray(response.data) ? response.data : []);
-    }catch(err){
-      console.log(err)
+    } catch (err) {
+      console.log(err);
       setResultSearch([]);
     }
-  }
+  };
   return (
     <>
       <NewSala visible={isOpen} onClose={() => setIsOpen(false)} />
@@ -55,7 +55,10 @@ export const Rooms = () => {
               value={dataSearch.roomName}
             />
             <div>
-              <button className={style.btnSearch} onClick={()=> searchRoom(dataSearch)}>
+              <button
+                className={style.btnSearch}
+                onClick={() => searchRoom(dataSearch)}
+              >
                 <Search size={16} />
               </button>
             </div>
@@ -69,7 +72,7 @@ export const Rooms = () => {
             + Nova Sala
           </button>
         </div>
-        <div className={style.filters}>
+        {/* <div className={style.filters}>
           <p>Filtros Rapidos</p>
           <div className={style.filterOptions}>
             <select name="" id="">
@@ -90,10 +93,10 @@ export const Rooms = () => {
 
             <button className={style.applyBtn}>Aplicar Filtros</button>
           </div>
-        </div>
+        </div> */}
         <section className={style.roomList}>
           {/* Lista de salas será renderizada aqui */}
-           {resultSearch.length > 0
+          {resultSearch.length > 0
             ? resultSearch.map((result) => (
                 <CardRoom
                   key={result?.id}
@@ -102,22 +105,22 @@ export const Rooms = () => {
                   location={result?.localizacao}
                   qtdturma={result?.turmas?.length}
                 />
-              )):rooms?.rooms?.map((room) => (
-            <CardRoom
-              key={room?.id}
-              nameRoom={room?.nome}
-              capacidade={room?.capacidade}
-              location={room?.localizacao}
-              qtdturma={room?.turmas.length}
-            />
-          ))}
-          
+              ))
+            : rooms?.rooms?.map((room) => (
+                <CardRoom
+                  key={room?.id}
+                  nameRoom={room?.nome}
+                  capacidade={room?.capacidade}
+                  location={room?.localizacao}
+                  qtdturma={room?.turma.length}
+                />
+              ))}
         </section>
         <div className={style.containerPaginator}>
-            {Array.from({ length: Math.max(0, pages) }).map((_, i) => (              <PaginatorRoom key={i} page={i + 1} />
-           ))}
-
-          </div>
+          {Array.from({ length: Math.max(0, pages) }).map((_, i) => (
+            <PaginatorRoom key={i} page={i + 1} />
+          ))}
+        </div>
       </section>
     </>
   );

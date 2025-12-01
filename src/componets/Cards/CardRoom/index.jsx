@@ -1,17 +1,31 @@
-import React from 'react'
-import style from './style.module.css'
-import { Edit2, Eye, Trash } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+import React from "react";
+import style from "./style.module.css";
+import { Edit2, Eye, Trash } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
-export const CardRoom = ({nameRoom, location, capacidade, status, qtdturma}) => {
+export const CardRoom = ({
+  nameRoom,
+  location,
+  capacidade,
+  status,
+  qtdturma,
+}) => {
   const navigator = useNavigate();
   return (
     <>
       <article className={style.cardRoom}>
         <div className={style.infoRoom}>
-          <p>
-            {nameRoom}
-          </p>
+          <div className={style.headerCard}>
+            <p>{nameRoom}</p>
+            <button
+              className={style.btn}
+              onClick={() => {
+                navigator(`/adm/dashboard/salas/${nameRoom}`);
+              }}
+            >
+              <Eye className={style.icon} />
+            </button>
+          </div>
           <p>
             Localização: <span>{location}</span>
           </p>
@@ -21,25 +35,20 @@ export const CardRoom = ({nameRoom, location, capacidade, status, qtdturma}) => 
           <p>
             Status: <span>Ativa</span>
           </p>
-           <p>
+          <p>
             Turmas: <span>{qtdturma}</span>
           </p>
         </div>
 
-        <div className={style.actions}>
-          <button className={style.btn} onClick={()=>{
-            navigator(`/adm/dashboard/salas/${nameRoom}`)
-          }}>
-            <Eye className={style.icon} />
-            </button>
+        {/* <div className={style.actions}>
           <button className={style.btn}>
             <Edit2 className={style.icon} />
-            </button>
+          </button>
           <button className={style.btn}>
             <Trash className={style.icon} />
-            </button>
-        </div>
+          </button>
+        </div> */}
       </article>
     </>
-  )
-}
+  );
+};

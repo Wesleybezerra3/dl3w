@@ -4,16 +4,40 @@ import { useEffect } from "react";
 import api from "../../services/api";
 import { useState } from "react";
 import { useAppContext } from "../../context/AppContext";
-import { ArrowLeftRight, AwardIcon, Edit, GraduationCapIcon, KeyRound, Replace, SwitchCamera, ToggleLeft } from "lucide-react";
+import {
+  ArrowLeftRight,
+  AwardIcon,
+  Edit,
+  GraduationCapIcon,
+  KeyRound,
+  Replace,
+  SwitchCamera,
+  ToggleLeft,
+} from "lucide-react";
 import { Load } from "../../componets/Loards/load";
-import { ChangeClass } from "../../componets/Modals/ChangeClass";
+import { ChangeClass } from "../../componets/Modals/StudentActions/ChangeClass";
+import { ChangeCourse } from "../../componets/Modals/StudentActions/ChangeCourse";
+import { ChangeSituacion } from "../../componets/Modals/StudentActions/ChangeSituation";
+import { ChangePassword } from "../../componets/Modals/StudentActions/ChangePassword";
+import { DownloadPDF } from "../../componets/Reports/DownloadButton";
+import { StudentReport } from "../../componets/Reports/StudentReport";
+import { StudentsAllReport } from "../../componets/Reports/StudentsAllReport";
 
 export const StudentDinamic = () => {
-  const { setNotificationMessage, setResetKey, setTypeNotification, refresh } =
-    useAppContext();
+  const {
+    setNotificationMessage,
+    setResetKey,
+    setTypeNotification,
+    refresh,
+    refreshKey,
+    setVisibleLoad,
+  } = useAppContext();
   const [load, setLoad] = useState(false);
-    const [isOpen, setIsOpen] = useState(false);
-  
+  const [resumeSelect, setResumeSelect] = useState('1');
+  const [isOpenT, setIsOpenT] = useState(false);
+  const [isOpenC, setIsOpenC] = useState(false);
+  const [isOpenS, setIsOpenS] = useState(false);
+  const [isOpenP, setIsOpenP] = useState(false);
 
   const { matricula } = useParams();
   const [isEdit, setIsEdit] = useState(true);
@@ -35,7 +59,7 @@ export const StudentDinamic = () => {
         email: student.email || "",
       });
     }
-  }, [student]);
+  }, [refreshKey, student]);
 
   const handleObj = (e) => {
     const { name, value } = e.target;
@@ -44,8 +68,8 @@ export const StudentDinamic = () => {
 
   useEffect(() => {
     const getStudent = async () => {
-      console.log(typeof matricula);
       try {
+        setVisibleLoad(true)
         const response = await api.get("/alunos/getByMatricula", {
           params: { matricula },
         });
@@ -63,11 +87,13 @@ export const StudentDinamic = () => {
         setResetKey((prev) => prev + 1);
         setTypeNotification("e");
         console.log(err);
+      }finally{
+        setVisibleLoad(false)
       }
     };
 
     getStudent();
-  }, []);
+  }, [refreshKey]);
 
   const handleForm = async (e) => {
     e.preventDefault();
@@ -85,7 +111,6 @@ export const StudentDinamic = () => {
       setNotificationMessage(message);
       setResetKey((prev) => prev + 1);
       setTypeNotification("s");
-      refresh();
     } catch (err) {
       console.log(err);
 
@@ -100,19 +125,46 @@ export const StudentDinamic = () => {
 
   return (
     <>
-    <ChangeClass visible={isOpen} onClose={() => setIsOpen(false)}/>
+      <ChangeClass
+        visible={isOpenT}
+        onClose={() => setIsOpenT(false)}
+        currentClass={student?.turma?.nome}
+        id={student?.turma?.curso?.id}
+        matricula={matricula}
+      />
+      <ChangeCourse
+        visible={isOpenC}
+        onClose={() => setIsOpenC(false)}
+        currentCourse={student?.turma?.curso?.nome}
+        matricula={matricula}
+      />
+      <ChangeSituacion
+        visible={isOpenS}
+        onClose={() => setIsOpenS(false)}
+        currentSituacao={student?.situacao}
+        matricula={matricula}
+      />
+      <ChangePassword
+        visible={isOpenP}
+        onClose={() => setIsOpenP(false)}
+        matricula={matricula}
+      />
+
       <section className="container">
         <section className={style.info}>
           <div className={style.headerInfo}>
             <h1>Informações pessoais</h1>
-            <button
-              type="button"
-              onClick={() => {
-                setIsEdit((prev) => !prev);
-              }}
-            >
-              <Edit />
-            </button>
+            <div style={{display:'flex', gap:'1em'}}>
+              <button
+                type="button"
+                onClick={() => {
+                  setIsEdit((prev) => !prev);
+                }}
+              >
+                <Edit />
+              </button>
+              <DownloadPDF name={matricula} document={<StudentReport student={student} />} />
+            </div>
           </div>
           <div className={style.content}>
             <div>
@@ -165,42 +217,7 @@ export const StudentDinamic = () => {
                 <input type="text" name="telefone" /> */}
                   </div>
                 </div>
-              </form>
-            </div>
-            <div className={style.containerActions}>
-              <h1>Ações</h1>
-              <div className={style.actions}>
-                <article className={style.cardActions} onClick={()=>{
-                      setIsOpen(true)
-                    }}>
-                  <div>
-                    <Replace className={style.icon}  />
-                  </div>
-                  <div>Mudar Turma</div>
-                </article>
-                <article className={style.cardActions}>
-                  <div>
-                    <GraduationCapIcon className={style.icon} />
-                    <ArrowLeftRight className={style.icon} />
-                  </div>
-                  <div>Mudar Curso</div>
-                </article>
-                <article className={style.cardActions}>
-                  <div>
-                    <ToggleLeft className={style.icon} />
-                  </div>
-                  <div>Alterar Situação</div>
-                </article>
-                <article className={style.cardActions}>
-                  <div>
-                    <KeyRound className={style.icon} />
-                  </div>
-                  <div>Resetar Senha</div>
-                </article>
-              </div>
-            </div>
-          </div>
-          <div className={style.containerBtn}>
+                  <div className={style.containerBtn}>
             <button
               type="button"
               className={style.btnC}
@@ -216,7 +233,61 @@ export const StudentDinamic = () => {
               <Load visible={load} />
               {load ? "" : "Salvar"}
             </button>
+          </div> 
+              </form>
+            </div>
+            <div className={style.containerActions}>
+              <h1>Ações</h1>
+              <div className={style.actions}>
+                <article
+                  className={style.cardActions}
+                  onClick={() => {
+                    setIsOpenT(true);
+                  }}
+                >
+                  <div>
+                    <Replace className={style.icon} />
+                  </div>
+                  <div>Mudar Turma</div>
+                </article>
+                <article
+                  className={style.cardActions}
+                  onClick={() => {
+                    setIsOpenC(true);
+                  }}
+                >
+                  <div>
+                    <GraduationCapIcon className={style.icon} />
+                    <ArrowLeftRight className={style.icon} />
+                  </div>
+                  <div>Mudar Curso</div>
+                </article>
+                <article
+                  className={style.cardActions}
+                  onClick={() => {
+                    setIsOpenS(true);
+                  }}
+                >
+                  <div>
+                    <ToggleLeft className={style.icon} />
+                  </div>
+                  <div>Alterar Situação</div>
+                </article>
+                <article
+                  className={style.cardActions}
+                  onClick={() => {
+                    setIsOpenP(true);
+                  }}
+                >
+                  <div>
+                    <KeyRound className={style.icon} />
+                  </div>
+                  <div>Resetar Senha</div>
+                </article>
+              </div>
+            </div>
           </div>
+        
         </section>
 
         <section className={style.containerInfoAca}>
@@ -256,13 +327,17 @@ export const StudentDinamic = () => {
             </div>
           </div>
           <div className={style.card}>
-            <div>
+            <div className={style.headerResume}>
               <h1>Resumo</h1>
-            </div>
-            <div>
-              <button>Presença</button>
+              <div className={style.resumeBtns}>
+                <button  className={`${style.btnResume} ${resumeSelect === '1'? style.select:style.disabled}`} onClick={()=>setResumeSelect('1')}>Presença</button>
 
-              <button>Nota</button>
+                <button className={`${style.btnResume} ${resumeSelect === '2'? style.select:style.disabled}`} onClick={()=>setResumeSelect('2')}>Nota</button>
+              </div>
+            </div>
+
+            <div>
+              <p>Nenhum resumo disponivel</p>
             </div>
           </div>
         </section>

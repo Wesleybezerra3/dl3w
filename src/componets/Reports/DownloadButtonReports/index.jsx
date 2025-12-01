@@ -7,7 +7,7 @@ export const DownloadPDFReports = ({ name, document, title }) => {
     <PDFDownloadLink
       document={document}
       fileName={`relatorio-${name}.pdf`}
-      style={{ textDecoration: "none" }} // remove underline padrão
+      style={{ textDecoration: "none" }} 
     >
       <button className={style.btnDownload}>
         <div className={style.iconWrapper}>

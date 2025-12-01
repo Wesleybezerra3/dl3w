@@ -198,7 +198,7 @@ export const RoomDinamic = () => {
             </div>
             <section className={style.containerDisciplinas}>
               <div className={style.headerDisciplinas}>
-                <h1>Disciplinas Atribuídas</h1>
+                <h1>Turmas Atribuídas</h1>
                 <button onClick={() => setIsOpenAdd(true)}>
                   <SquarePlusIcon />
                 </button>

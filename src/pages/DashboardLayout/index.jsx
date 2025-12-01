@@ -4,7 +4,7 @@ import { MenuSide } from "../../componets/ui/MenuSide";
 import { HeaderDashboard } from "../../componets/HeaderDashboard";
 import {CardNotifications} from '../../componets/Cards/CardNotifications'
 import { Outlet } from "react-router-dom";
-import { PageLoad } from "../../componets/Loards/pageLoad";
+import { PageLoad } from "../../componets/Loards/PageLoad";
 
 export const DashboardLayout = () => {
   return (

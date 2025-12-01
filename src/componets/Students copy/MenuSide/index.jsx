@@ -55,20 +55,10 @@ export const MenuSideTeacher = ({ visible, onClose }) => {
               <div className={style.start}>
                 <ul>
                   <li>
-                    <Link to="/student/plataform/home" className={style.links}>
+                    <Link to="/teacher/plataform/home" className={style.links}>
                       <Home className={style.icon} /> <span>Inicio</span>
                     </Link>
                   </li>
-                </ul>
-              </div>
-              <div className={style.management}>
-                <ul>
-                  <li>
-                    <Link to="/student/plataform/mycourse" className={style.links}>
-                      <BookCopyIcon className={style.icon} /> <span>Meu Curso</span>
-                    </Link>
-                  </li>
-                
                 </ul>
               </div>
             </div>

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import style from "./style.module.css";
 
-import api from "../../../../services/api";
-import { useAppContext } from "../../../../context/AppContext";
-import { Load } from "../../../Loards/load";
 
-export const NewSubject = ({
+import api from "../../../services/api";
+import { useAppContext } from "../../../context/AppContext";
+import { Load } from "../../Loards/load";
+
+export const NewClass = ({
   visible,
   onClose,
   teacherDisciplines,

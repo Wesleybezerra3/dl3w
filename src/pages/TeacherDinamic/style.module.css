@@ -1,340 +1,347 @@
 .info {
-  width: 100%;
-  padding: 16px;
-  border: 1px solid var(--border-color);
-  border-radius: 5px;
-  background-color: var(--secudary-color);
-  font-family: "Roboto", sans-serif;
-  color: var(--text-color);
-  /* display: flex; */
-  /* flex-direction: column; */
-  gap: 1em;
+    width: 100%;
+    padding: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--secudary-color);
+    font-family: "Roboto", sans-serif;
+    color: var(--text-color);
+    /* display: flex; */
+    /* flex-direction: column; */
+    gap: 1em;
 }
 
 .info h1 {
-  font-size: 1.2em;
-  margin-bottom: 1em;
-}
-.content {
-  display: flex;
-  gap: 2em;
+    font-size: 1.2em;
+    margin-bottom: 1em;
 }
 
+.content {
+    display: flex;
+    gap: 2em;
+}
 
 .containerDisciplinas {
-  padding: 16px;
-  border: 1px solid var(--border-color);
-  /* height: 180px; */
-  width: 100%;
-  border-radius: 5px;
-  background-color: var(--secudary-color);
+    padding: 16px;
+    border: 1px solid var(--border-color);
+    /* height: 180px; */
+    width: 100%;
+    border-radius: 5px;
+    background-color: var(--secudary-color);
 }
 
 .containerDisciplinas h1 {
-  color: var(--text-color);
-  font-size: 1.2em;
+    color: var(--text-color);
+    font-size: 1.2em;
 }
 
-.headerDisciplinas{
+.headerDisciplinas {
     display: flex;
     gap: 1em;
 }
-.headerDisciplinas button{
+
+.headerDisciplinas button {
     background-color: transparent;
     outline: none;
     border: none;
     color: var(--primary-color);
     cursor: pointer;
-  transition: 0.25s ease;
-
+    transition: 0.25s ease;
 }
-.headerDisciplinas button:hover{
+
+.headerDisciplinas button:hover {
     transform: translateY(-3px);
 }
 
 .containerCardsDisciplinas {
-  display: flex;
-  /* flex-direction: column; */
-  gap: 1em;
-  margin-top: 1rem;
-  flex-wrap: wrap;
+    display: flex;
+    /* flex-direction: column; */
+    gap: 1em;
+    margin-top: 1rem;
+    flex-wrap: wrap;
 }
 
+
 /* CARD */
+
 .cardDisciplina {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  background: var(--secudary-color);
-  padding: 18px 22px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
-  transition: 0.25s ease;
-  cursor: pointer;
+    /* width: 300px; */
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--secudary-color);
+    padding: 18px 22px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    transition: 0.25s ease;
+    cursor: pointer;
 }
 
 .cardDisciplina:hover {
-  transform: translateY(-3px);
-  box-shadow: 0px 6px 18px rgba(0,0,0,0.15);
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.15);
 }
 
+
 /* ÍCONE */
+
 .iconContainer {
-  width: 45px;
-  height: 45px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  background: var(--primary-color);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background: var(--primary-color);
 }
 
 .iconContainer svg {
-  color: #fff;
+    color: #fff;
 }
 
 .infoDisciplina {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
 }
 
 .nomeDisciplina {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--text-color);
-  
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 240px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* max-width: 400px; */
 }
 
 .carga {
-  font-size: 0.85rem;
-  color: var(--text-color);
+    font-size: 0.85rem;
+    color: var(--text-color);
 }
 
-
-
 .containerInput {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .containerInput label {
-  margin-bottom: -10px;
-  font-weight: 400;
+    margin-bottom: -10px;
+    font-weight: 400;
 }
 
 .containerInput input {
-  width: 300px;
-  padding: 8px 10px;
-  background-color: white;
-  border: 1px solid var(--border-color);
-  outline: none;
-  font-family: "Roboto", sans-serif;
-  color: var(--text-color);
-  font-size: 1em;
-  /* font-weight: 500; */
-  border-radius: 5px;
-  font-weight: 500;
+    width: 300px;
+    padding: 8px 10px;
+    background-color: white;
+    border: 1px solid var(--border-color);
+    outline: none;
+    font-family: "Roboto", sans-serif;
+    color: var(--text-color);
+    font-size: 1em;
+    /* font-weight: 500; */
+    border-radius: 5px;
+    font-weight: 500;
 }
 
 .containerInput input:disabled {
-  color: var(--gray-color);
-  font-weight: 500;
+    color: var(--gray-color);
+    font-weight: 500;
 }
 
 .containerInfo {
-  width: 100%;
-  display: flex;
-  /* align-items: center; */
-  gap: 2em;
-  /* flex-direction: column; */
+    width: 100%;
+    display: flex;
+    /* align-items: center; */
+    gap: 2em;
+    /* flex-direction: column; */
 }
 
 .containerBtn {
-  display: flex;
-  align-items: center;
-  justify-content: right;
-  gap: 1em;
-  margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: 1em;
+    margin-top: 20px;
 }
 
 .btn {
-  width: 100px;
-  height: 40px;
-  padding: 5px;
-  background-color: var(--primary-color);
-  color: var(--white-color);
-  font-size: 0.8em;
-  font-weight: 600;
-  font-family: "Roboto", sans-serif;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 5px;
-  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
-  transition: opacity 0.3s ease;
+    width: 100px;
+    height: 40px;
+    padding: 5px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    font-size: 0.8em;
+    font-weight: 600;
+    font-family: "Roboto", sans-serif;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+    transition: opacity 0.3s ease;
 }
 
 .btn,
 .btnC :hover {
-  opacity: 0.9;
+    opacity: 0.9;
 }
 
 .btnC {
-  width: 100px;
-  height: 40px;
-  padding: 5px;
-  background-color: transparent;
-  color: var(--primary-color);
-  border: 2px solid var(--primary-color);
-  font-size: 0.8em;
-  font-weight: 600;
-  font-family: "Roboto", sans-serif;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 5px;
-  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
-  transition: opacity 0.3s ease;
+    width: 100px;
+    height: 40px;
+    padding: 5px;
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    font-size: 0.8em;
+    font-weight: 600;
+    font-family: "Roboto", sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+    transition: opacity 0.3s ease;
 }
 
 .btnC:disabled {
-  opacity: 0.4;
-  cursor: auto;
+    opacity: 0.4;
+    cursor: auto;
 }
 
 .btn:disabled {
-  opacity: 0.4;
-  cursor: auto;
+    opacity: 0.4;
+    cursor: auto;
 }
 
 .headerInfo {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .headerInfo button {
-  border: none;
-  outline: none;
-  background-color: transparent;
-  cursor: pointer;
-  color: var(--primary-color);
-  transition: 0.25s ease;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: var(--primary-color);
+    transition: 0.25s ease;
 }
 
 .headerInfo button:hover {
-transform: translateY(-3px);
+    transform: translateY(-3px);
 }
 
 .card {
-  padding: 16px;
-  border: 1px solid var(--border-color);
-  height: 250px;
-  width: 100%;
-  border-radius: 5px;
-  background-color: var(--secudary-color);
+    padding: 16px;
+    border: 1px solid var(--border-color);
+    height: 250px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: var(--secudary-color);
 }
 
 .containerInfos {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8em;
-  margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+    margin-top: 10px;
 }
 
 .infos {
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-  /* gap: 3em; */
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    /* gap: 3em; */
 }
 
 .infos p:nth-child(2) {
-  font-weight: bold;
+    font-weight: bold;
 }
+
 .containerActions {
-  padding: 10px;
-  width: 100%;
+    padding: 10px;
+    width: 100%;
 }
+
 .actions {
-  display: flex;
-  width: 50%;
-  justify-content: space-between;
-  gap: 10px;
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    gap: 10px;
 }
+
 .containerActions h1 {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .cardActions {
-  width: 70%;
-  height: 100px;
-  padding: 12px;
-
-  background: #ffffff;
-  border: 2px solid var(--primary-color);
-  border-radius: 8px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
-
-  text-align: left;
+    width: 70%;
+    height: 100px;
+    padding: 12px;
+    background: #ffffff;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: left;
 }
+
 .cardActions:hover {
-  background: var(--primary-color);
-  color: white;
-  transform: translateY(-3px);
-  box-shadow: 0px 8px 20px rgba(50, 94, 161, 0.3);
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0px 8px 20px rgba(50, 94, 161, 0.3);
 }
+
 .headerResume {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
+
 .resumeBtns {
-  display: flex;
-  gap: 1em;
+    display: flex;
+    gap: 1em;
 }
+
 .btnResume {
-  height: 30px;
-  padding: 0 14px;
-  border: none;
-  border-radius: 4px;
-  font-family: "Roboto", sans-serif;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.12s ease, opacity 0.12s ease;
-  box-sizing: border-box;
-  font-size: 0.9em;
-  
+    height: 30px;
+    padding: 0 14px;
+    border: none;
+    border-radius: 4px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.12s ease, opacity 0.12s ease;
+    box-sizing: border-box;
+    font-size: 0.9em;
 }
+
 .select {
-  background-color: var(--primary-color);
-  color: var(--white-color);
+    background-color: var(--primary-color);
+    color: var(--white-color);
 }
+
 .disabled {
-  background-color: var(--border-color);
-  /* border: 2px solid var(--primary-color); */
-  color: var(--primary-color);
+    background-color: var(--border-color);
+    /* border: 2px solid var(--primary-color); */
+    color: var(--primary-color);
 }
 
 .btnResume:hover {
-  opacity: 0.95;
-  transform: translateY(-1px);
+    opacity: 0.95;
+    transform: translateY(-1px);
 }

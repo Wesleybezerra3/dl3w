@@ -5,32 +5,28 @@ import { useAppContext } from "../../../context/AppContext";
 
 export const NewTeacher = ({ visible, onClose }) => {
   const { classes } = useAppContext();
- 
+
   const [form, setForm] = useState({
     nome: "",
     cpf: "",
     email: "",
     data_nascimento: "",
-    titulacao:''
-
+    titulacao: "",
   });
 
-  const NewTeacher = async ()=>{
+  const NewTeacher = async () => {
     console.log(form);
-    try{
-      const response = await api.post('/professores', form)
-      if(response.status !== 201){
-        alert("Erro ao criar novo aluno");
-        throw new Error("Erro ao matricular novo professor");
-      }
-      if(response.status === 201){
-        alert("Professor matriculado com sucesso!");
-      }
+    try {
+      const response = await api.post("/professores", form);
+
+      alert("Professor matriculado com sucesso!");
       console.log(response.data);
-    }catch(err){
+    } catch (err) {
+      alert("Erro ao criar novo aluno");
+
       console.log(err);
     }
-  }
+  };
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -115,14 +111,14 @@ export const NewTeacher = ({ visible, onClose }) => {
             <label htmlFor="data">Data de nascimento</label>
             <input
               name="data_nascimento"
-              type="text"
+              type="date"
               placeholder="Digite a data de nascimento"
               value={form.data_nascimento}
               onChange={handleChange}
               autoComplete="off"
             />
           </div>
-           <div className={style.inputGroup}>
+          <div className={style.inputGroup}>
             <label htmlFor="data">Titulação</label>
             <input
               name="titulacao"
@@ -133,8 +129,7 @@ export const NewTeacher = ({ visible, onClose }) => {
               autoComplete="off"
             />
           </div>
-          
-        
+
           <div className={style.footerModal}>
             <button type="button" className={style.cancelBtn} onClick={onClose}>
               Cancelar

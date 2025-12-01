@@ -25,42 +25,38 @@ export const HomeTeacher = () => {
   return (
     <>
       <section className="container">
-        <CardDashboardStudent
-          backColor={"#038B20"}
-          number={91}
-          icon={calendar}
-          text={"Presença"}
-          textSecudary={"Global"}
-        />
-        <CardDashboardStudent
-          backColor={"#0A51BD"}
-          number={8.5}
-          icon={note}
-          text={"Média"}
-          textSecudary={"Global"}
-        />
-        <CardDashboardStudent
-          backColor={"#999514"}
-          number={6.8}
-          icon={goodNotes}
-          text={"Ultima Nota"}
-          textSecudary={"Banco de dados"}
-        />
-      </section>
+        <div className={style.containerDisciplines}>
+          <h1>
+            Minhas disciplinas
+          </h1>
 
-      <section className="container">
-        <div className={style.bottomMenu}>
-          <button className={style.btnActive}>
-            Sobre o Curso
-            <img src={arrow} alt="" />
-          </button>
+          <div className={style.containerCardDisciplines}>
+  {user?.disciplinas && user?.disciplinas.length > 0 ? (
+    user.disciplinas.map((disciplina) => {
+      return (
+        <article className={style.card} key={disciplina.id}>
+          <p>{disciplina?.nome}</p>
 
-          <button className={style.btnActive}>
-            Quadro de Horários
-            <img src={arrow} alt="" />
-          </button>
+          <div>
+            <p>Turmas:</p>
+            <p>{disciplina.turmasCount || 0}</p>
+          </div>
+
+          <div>
+            <p>Alunos:</p>
+            <p>{disciplina.totalAlunos || 0}</p>
+          </div>
+        </article>
+      );
+    })
+  ) : (
+    <p>Nenhuma Disciplina atribuída</p>
+  )}
+</div>
         </div>
+        
       </section>
+
     </>
   );
 };

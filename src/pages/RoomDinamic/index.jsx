@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import style from "./style.module.css";
 import { useEffect } from "react";
 import api from "../../services/api";
@@ -11,6 +11,7 @@ import {
   GraduationCapIcon,
   KeyRound,
   Replace,
+  SquarePlusIcon,
   SwitchCamera,
   ToggleLeft,
 } from "lucide-react";
@@ -21,6 +22,7 @@ import { ChangeSituacion } from "../../componets/Modals/StudentActions/ChangeSit
 import { ChangePassword } from "../../componets/Modals/StudentActions/ChangePassword";
 import { DownloadPDF } from "../../componets/Reports/DownloadButton";
 import { StudentReport } from "../../componets/Reports/StudentReport";
+import { NewClass } from "../../componets/Modals/AddClass";
 
 export const RoomDinamic = () => {
   const {
@@ -32,11 +34,14 @@ export const RoomDinamic = () => {
     setVisibleLoad,
   } = useAppContext();
   const [load, setLoad] = useState(false);
-  const [resumeSelect, setResumeSelect] = useState('1');
+  const [resumeSelect, setResumeSelect] = useState("1");
   const [isOpenT, setIsOpenT] = useState(false);
   const [isOpenC, setIsOpenC] = useState(false);
   const [isOpenS, setIsOpenS] = useState(false);
   const [isOpenP, setIsOpenP] = useState(false);
+  const [isOpenAdd, setIsOpenAdd] = useState(false);
+  const navigate = useNavigate();
+
 
   const { name } = useParams();
   const [isEdit, setIsEdit] = useState(true);
@@ -44,8 +49,8 @@ export const RoomDinamic = () => {
 
   const [formData, setFormData] = useState({
     nome: "",
-    localizacao:'',
-    capacidade:'',
+    localizacao: "",
+    capacidade: "",
   });
 
   useEffect(() => {
@@ -53,7 +58,7 @@ export const RoomDinamic = () => {
       setFormData({
         nome: room.nome || "",
         localizacao: room.localizacao || "",
-        capacidade: room.capacidade || '',
+        capacidade: room.capacidade || "",
       });
     }
   }, [refreshKey, room]);
@@ -66,10 +71,10 @@ export const RoomDinamic = () => {
   useEffect(() => {
     const getStudent = async () => {
       try {
-        setVisibleLoad(true)
-        console.log(name)
+        setVisibleLoad(true);
+        console.log(name);
         const response = await api.get("/salas/getByName", {
-          params: {name:name},
+          params: { name: name },
         });
         const data = response.data;
         const message = response.data.message;
@@ -78,15 +83,15 @@ export const RoomDinamic = () => {
         setNotificationMessage(message);
         setResetKey((prev) => prev + 1);
         setTypeNotification("s");
-        console.log("aluno:", data);
+        console.log("sala:", data);
       } catch (err) {
         const message = err.response.data.message;
         setNotificationMessage(message);
         setResetKey((prev) => prev + 1);
         setTypeNotification("e");
         console.log(err);
-      }finally{
-        setVisibleLoad(false)
+      } finally {
+        setVisibleLoad(false);
       }
     };
 
@@ -123,36 +128,12 @@ export const RoomDinamic = () => {
 
   return (
     <>
-      {/* <ChangeClass
-        visible={isOpenT}
-        onClose={() => setIsOpenT(false)}
-        currentClass={student?.turma?.nome}
-        id={student?.turma?.curso?.id}
-        matricula={matricula}
-      />
-      <ChangeCourse
-        visible={isOpenC}
-        onClose={() => setIsOpenC(false)}
-        currentCourse={student?.turma?.curso?.nome}
-        matricula={matricula}
-      />
-      <ChangeSituacion
-        visible={isOpenS}
-        onClose={() => setIsOpenS(false)}
-        currentSituacao={student?.situacao}
-        matricula={matricula}
-      />
-      <ChangePassword
-        visible={isOpenP}
-        onClose={() => setIsOpenP(false)}
-        matricula={matricula}
-      /> */}
-
+      <NewClass visible={isOpenAdd} onClose={()=> setIsOpenAdd(false)}/>
       <section className="container">
         <section className={style.info}>
           <div className={style.headerInfo}>
             <h1>Informações pessoais</h1>
-            <div style={{display:'flex', gap:'1em'}}>
+            <div style={{ display: "flex", gap: "1em" }}>
               <button
                 type="button"
                 onClick={() => {
@@ -195,97 +176,60 @@ export const RoomDinamic = () => {
                       disabled={isEdit}
                     />
                   </div>
-                  {/* <div className={style.containerInput}>
-                    <label htmlFor="matricula">Matrícula</label>
-                    <input
-                      type="text"
-                      name="matricula"
-                      value={matricula}
-                      disabled
-                    />
-                    <label htmlFor="email">E-mail</label>
-                    <input
-                      type="email"
-                      name="email"
-                      onChange={handleObj}
-                      value={formData.email}
-                      disabled={isEdit}
-                    />
-                    {/* <label htmlFor="telefone">Telefone</label>
-                <input type="text" name="telefone" /> */}
-                  {/* </div>  */}
                 </div>
-                  <div className={style.containerBtn}>
-            <button
-              type="button"
-              className={style.btnC}
-              disabled={isEdit}
-              onClick={() => {
-                setFormData(room);
-                setIsEdit(true);
-              }}
-            >
-              Cancelar
-            </button>
-            <button type="submit" className={style.btn} disabled={isEdit}>
-              <Load visible={load} />
-              {load ? "" : "Salvar"}
-            </button>
-          </div> 
+                <div className={style.containerBtn}>
+                  <button
+                    type="button"
+                    className={style.btnC}
+                    disabled={isEdit}
+                    onClick={() => {
+                      setFormData(room);
+                      setIsEdit(true);
+                    }}
+                  >
+                    Cancelar
+                  </button>
+                  <button type="submit" className={style.btn} disabled={isEdit}>
+                    <Load visible={load} />
+                    {load ? "" : "Salvar"}
+                  </button>
+                </div>
               </form>
             </div>
-            {/* <div className={style.containerActions}>
-              <h1>Ações</h1>
-              <div className={style.actions}>
-                <article
-                  className={style.cardActions}
-                  onClick={() => {
-                    setIsOpenT(true);
-                  }}
-                >
-                  <div>
-                    <Replace className={style.icon} />
-                  </div>
-                  <div>Mudar Turma</div>
-                </article>
-                <article
-                  className={style.cardActions}
-                  onClick={() => {
-                    setIsOpenC(true);
-                  }}
-                >
-                  <div>
-                    <GraduationCapIcon className={style.icon} />
-                    <ArrowLeftRight className={style.icon} />
-                  </div>
-                  <div>Mudar Curso</div>
-                </article>
-                <article
-                  className={style.cardActions}
-                  onClick={() => {
-                    setIsOpenS(true);
-                  }}
-                >
-                  <div>
-                    <ToggleLeft className={style.icon} />
-                  </div>
-                  <div>Alterar Situação</div>
-                </article>
-                <article
-                  className={style.cardActions}
-                  onClick={() => {
-                    setIsOpenP(true);
-                  }}
-                >
-                  <div>
-                    <KeyRound className={style.icon} />
-                  </div>
-                  <div>Resetar Senha</div>
-                </article>
+            <section className={style.containerDisciplinas}>
+              <div className={style.headerDisciplinas}>
+                <h1>Disciplinas Atribuídas</h1>
+                <button onClick={() => setIsOpenAdd(true)}>
+                  <SquarePlusIcon />
+                </button>
               </div>
-            </div> */}
+              <div className={style.containerCardsDisciplinas}>
+                {room?.turma && room.turma.length > 0 ? (
+                  room?.turma.map((turma) => (
+                    <article
+                    onClick={()=>navigate(`/adm/dashboard/turmas/${turma.nome}`)}
+                      className={style.cardDisciplina}
+                      key={turma.id}
+                      title={turma.nome}
+                    >
+                      <div className={style.iconContainer}>
+                        <GraduationCapIcon size={26} />
+                      </div>
+
+                      <div className={style.infoturma}>
+                        <p className={style.nometurma}>{turma.nome}</p>
+                        <span className={style.carga}>
+                          Turno: {turma.turno}
+                        </span>
+                      </div>
+                    </article>
+                  ))
+                ) : (
+                  <p style={{ color: "#777" }}>Nenhuma turma atribuída.</p>
+                )}
+              </div>
+            </section>
           </div>
-        
         </section>
 
         {/* <section className={style.containerInfoAca}>

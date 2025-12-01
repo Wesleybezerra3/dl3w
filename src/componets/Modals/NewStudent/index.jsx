@@ -5,29 +5,24 @@ import { useAppContext } from "../../../context/AppContext";
 
 export const NewStudent = ({ visible, onClose }) => {
   const { classes } = useAppContext();
- 
+
   const [form, setForm] = useState({
     nome: "",
     cpf: "",
     turma: "",
   });
 
-  const NewStudent = async ()=>{
+  const NewStudent = async () => {
     console.log(form);
-    try{
-      const response = await api.post('/alunos', form)
-      if(response.status !== 201){
-        alert("Erro ao criar novo aluno");
-        throw new Error("Erro ao matricular novo aluno");
-      }
-      if(response.status === 201){
-        alert("Aluno matriculado com sucesso!");
-      }
+    try {
+      const response = await api.post("/alunos", form);
+      alert("Aluno matriculado com sucesso!");
       console.log(response.data);
-    }catch(err){
+    } catch (err) {
+      alert("Erro ao criar novo aluno");
       console.log(err);
     }
-  }
+  };
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -110,7 +105,7 @@ export const NewStudent = ({ visible, onClose }) => {
             <label htmlFor="data">Data de nascimenteo</label>
             <input
               name="data_nascimento"
-              type="text"
+              type="date"
               placeholder="Digite a data de nascimento"
               value={form.data_nascimento}
               onChange={handleChange}

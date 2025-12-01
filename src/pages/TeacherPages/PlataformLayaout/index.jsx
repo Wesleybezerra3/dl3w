@@ -45,7 +45,7 @@ export const PlataformLayouTeacher = () => {
       <MenuSideTeacher visible={isOpen} onClose={() => setIsOpen(!isOpen)} />
       <main>
         <section className={style.containerWelcome}>
-          <h1>Olá! {user?.nome ?? ''}👋</h1>
+          <h1>Olá! {user?.professor?.nome ?? ''}👋</h1>
         </section>
         {/* <section>
           <div className={style.courseName}>

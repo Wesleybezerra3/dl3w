@@ -13,7 +13,7 @@ import { GraficoDePizza } from "../../componets/GraficPie";
 
 import { useAppContext } from "../../context/AppContext";
 import { useNavigate } from "react-router-dom";
-import { PageLoad } from "../../componets/Loards/pageLoad";
+import { PageLoad } from "../../componets/Loards/PageLoad";
 
 export const Dashboard = () => {
   const { students, classes, teachers, rooms, courses } = useAppContext();
